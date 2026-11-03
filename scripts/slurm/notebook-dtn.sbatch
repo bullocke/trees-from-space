@@ -46,6 +46,10 @@ module purge 2>/dev/null || true
 TFS_PYTHON_ENV="${TFS_PYTHON_ENV:-$HOME/envs/tfs-python}"
 export PATH="$TFS_PYTHON_ENV/bin:$PATH"
 export PYTHONNOUSERSITE=1
+# What `conda activate` would set; without PROJ_DATA, GDAL-based readers
+# report "proj_create_from_database: Open of .../share/proj failed".
+export GDAL_DATA="$TFS_PYTHON_ENV/share/gdal"
+export PROJ_DATA="$TFS_PYTHON_ENV/share/proj"
 export MPLBACKEND=Agg
 
 case "$NOTEBOOK" in

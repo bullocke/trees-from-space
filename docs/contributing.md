@@ -51,6 +51,19 @@ Shared helper code (`helpers/python/`, `helpers/R/`) is added only after two com
 - Save provenance next to outputs: product and version, granule or item IDs, dates, quality rules, processing settings, package versions, and retrieval time. Never save credentials or expiring signed URLs.
 - Export rasters as Cloud Optimized GeoTIFF, multidimensional data as NetCDF or Zarr, and small tables as CSV with units in the column names.
 
+## Study sites
+
+Lessons share two study areas, defined in [`examples/sites.geojson`](../examples/sites.geojson) with stable `site_id` values. Each is a box about 6.6 km across that lies inside a single HLS/Sentinel-2 MGRS tile. Use another site only when a sensor's coverage or sampling requires it, and add it to the GeoJSON file with the same properties.
+
+| `site_id` | Site | Why |
+| --- | --- | --- |
+| `pando` | Pando aspen stand and Fish Lake, Fishlake National Forest, Utah (tile T12SVH) | A forest that CHPC users know, with a clear ecological story (aspen decline, browsing, fencing). The lake and meadows give visible contrast on maps. |
+| `wref` | Wind River Experimental Forest, Washington (NEON WREF, tile T10TER) | Tall, high-biomass old-growth conifer forest that contrasts with Pando. NEON airborne lidar and canopy height exist for 2017–2019, 2021–2023, and 2025, and NEON field plots support the later structure and biomass lessons. |
+
+`scripts/check_site_coverage.py` produced the selection evidence on 2026-11-03 ([`examples/site-coverage-2026-11-03.json`](../examples/site-coverage-2026-11-03.json)). It counts catalog matches only, so a lesson must still confirm the pixels or footprints available inside the box. For 2024, both sites returned granules for every planned product: HLS (summer window), Sentinel-2 L2A, GEDI L2A and L4A, NISAR GCOV (beta and provisional), MOD13Q1, Daymet, and ECOSTRESS. TEAK spans two MGRS tiles, and the NIWO and RMNP boxes had fewer low-cloud summer HLS scenes, so neither was chosen.
+
+The coverage check found newer product versions to evaluate when the corresponding lessons are written: GEDI L2A and L2B v003, GEDI L4A V3, and ECOSTRESS LSTE v003.
+
 ## Execution platforms
 
 CHPC compute nodes, including OnDemand interactive sessions, have no direct internet access. Every lesson that retrieves remote data must therefore work in two stages that use the same notebook: a run on a node with internet access fills the cache, and a run on a compute node reuses it offline. [The CHPC guide](getting-started/chpc.md) documents both routes. Colab and local runs do both stages in one pass.

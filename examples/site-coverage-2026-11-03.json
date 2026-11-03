@@ -1,0 +1,461 @@
+[
+ {
+  "site_id": "pando",
+  "name": "Pando aspen stand and Fish Lake, Fishlake NF, Utah",
+  "bbox": [
+   -111.788,
+   38.495,
+   -111.712,
+   38.555
+  ],
+  "hls_tiles": [
+   "T12SVH"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 2
+    },
+    "HLSS30": {
+     "granules": 12,
+     "low_cloud": 4
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 14,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 3
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 14,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 4
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 3
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 5
+    },
+    "HLSS30": {
+     "granules": 15,
+     "low_cloud": 4
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 45,
+   "GEDI L4A v2.1": 45,
+   "NISAR GCOV beta": 8,
+   "NISAR GCOV provisional": 19,
+   "MODIS MOD13Q1 v061": 24,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 173
+  },
+  "sentinel2_items": 13,
+  "neon_aop_years": {}
+ },
+ {
+  "site_id": "wref",
+  "name": "Wind River Experimental Forest, Washington (NEON WREF)",
+  "bbox": [
+   -121.994,
+   45.791,
+   -121.909,
+   45.85
+  ],
+  "hls_tiles": [
+   "T10TER"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 11,
+     "low_cloud": 4
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 12
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 9
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 15,
+     "low_cloud": 10
+    },
+    "HLSS30": {
+     "granules": 12,
+     "low_cloud": 8
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 5
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 5
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 6
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 5
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 53,
+   "GEDI L4A v2.1": 54,
+   "NISAR GCOV beta": 16,
+   "NISAR GCOV provisional": 68,
+   "MODIS MOD13Q1 v061": 24,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 212
+  },
+  "sentinel2_items": 13,
+  "neon_aop_years": {
+   "lidar point cloud": [
+    "2017",
+    "2018",
+    "2019",
+    "2021",
+    "2022",
+    "2023",
+    "2025"
+   ],
+   "canopy height": [
+    "2017",
+    "2018",
+    "2019",
+    "2021",
+    "2022",
+    "2023",
+    "2025"
+   ]
+  }
+ },
+ {
+  "site_id": "teak",
+  "name": "Lower Teakettle, California (NEON TEAK)",
+  "bbox": [
+   -119.043,
+   36.976,
+   -118.969,
+   37.035
+  ],
+  "hls_tiles": [
+   "T11SLA",
+   "T11SLB"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 4
+    },
+    "HLSS30": {
+     "granules": 26,
+     "low_cloud": 20
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 24,
+     "low_cloud": 7
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 14,
+     "low_cloud": 9
+    },
+    "HLSS30": {
+     "granules": 26,
+     "low_cloud": 13
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 14,
+     "low_cloud": 12
+    },
+    "HLSS30": {
+     "granules": 22,
+     "low_cloud": 12
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 14,
+     "low_cloud": 8
+    },
+    "HLSS30": {
+     "granules": 29,
+     "low_cloud": 16
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 36,
+   "GEDI L4A v2.1": 36,
+   "NISAR GCOV beta": 9,
+   "NISAR GCOV provisional": 75,
+   "MODIS MOD13Q1 v061": 24,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 422
+  },
+  "sentinel2_items": 22,
+  "neon_aop_years": {
+   "lidar point cloud": [
+    "2013",
+    "2017",
+    "2018",
+    "2019",
+    "2021",
+    "2023",
+    "2024",
+    "2026"
+   ],
+   "canopy height": [
+    "2013",
+    "2017",
+    "2018",
+    "2019",
+    "2021",
+    "2023",
+    "2024",
+    "2026"
+   ]
+  }
+ },
+ {
+  "site_id": "niwo",
+  "name": "Niwot Ridge, Colorado (NEON NIWO)",
+  "bbox": [
+   -105.621,
+   40.025,
+   -105.544,
+   40.084
+  ],
+  "hls_tiles": [
+   "T13TDE"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 4,
+     "low_cloud": 1
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 2
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 2
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 3
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 0
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 5
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 12,
+     "low_cloud": 5
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 7,
+     "low_cloud": 1
+    },
+    "HLSS30": {
+     "granules": 14,
+     "low_cloud": 2
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 49,
+   "GEDI L4A v2.1": 50,
+   "NISAR GCOV beta": 22,
+   "NISAR GCOV provisional": 91,
+   "MODIS MOD13Q1 v061": 48,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 195
+  },
+  "sentinel2_items": 12,
+  "neon_aop_years": {
+   "lidar point cloud": [
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2023",
+    "2024"
+   ],
+   "canopy height": [
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2023",
+    "2024"
+   ]
+  }
+ },
+ {
+  "site_id": "rmnp",
+  "name": "Rocky Mountains, Colorado (NEON RMNP)",
+  "bbox": [
+   -105.585,
+   40.246,
+   -105.507,
+   40.306
+  ],
+  "hls_tiles": [
+   "T13TDE"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 4,
+     "low_cloud": 1
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 2
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 2
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 3
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 0
+    },
+    "HLSS30": {
+     "granules": 13,
+     "low_cloud": 5
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 8,
+     "low_cloud": 3
+    },
+    "HLSS30": {
+     "granules": 12,
+     "low_cloud": 5
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 7,
+     "low_cloud": 1
+    },
+    "HLSS30": {
+     "granules": 14,
+     "low_cloud": 2
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 40,
+   "GEDI L4A v2.1": 40,
+   "NISAR GCOV beta": 22,
+   "NISAR GCOV provisional": 91,
+   "MODIS MOD13Q1 v061": 24,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 195
+  },
+  "sentinel2_items": 12,
+  "neon_aop_years": {
+   "lidar point cloud": [
+    "2017",
+    "2018",
+    "2020",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "canopy height": [
+    "2017",
+    "2018",
+    "2020",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ]
+  }
+ }
+]

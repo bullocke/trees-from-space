@@ -1,0 +1,80 @@
+{
+ "type": "FeatureCollection",
+ "name": "trees-from-space-sites",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "site_id": "pando",
+    "name": "Pando aspen stand and Fish Lake, Fishlake National Forest, Utah",
+    "description": "About 6.6 km box centered on the Pando quaking aspen clone (38.525 N, 111.750 W), including aspen and conifer forest, meadows, and the southwest shore of Fish Lake.",
+    "neon_site": null,
+    "hls_tile": "T12SVH"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -111.788,
+       38.495
+      ],
+      [
+       -111.712,
+       38.495
+      ],
+      [
+       -111.712,
+       38.555
+      ],
+      [
+       -111.788,
+       38.555
+      ],
+      [
+       -111.788,
+       38.495
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "site_id": "wref",
+    "name": "Wind River Experimental Forest, Washington (NEON WREF)",
+    "description": "About 6.6 km box centered on the NEON WREF tower (45.820 N, 121.952 W): old-growth Douglas-fir and western hemlock forest with repeated NEON airborne lidar.",
+    "neon_site": "WREF",
+    "hls_tile": "T10TER"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -121.994,
+       45.791
+      ],
+      [
+       -121.909,
+       45.791
+      ],
+      [
+       -121.909,
+       45.85
+      ],
+      [
+       -121.994,
+       45.85
+      ],
+      [
+       -121.994,
+       45.791
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}
