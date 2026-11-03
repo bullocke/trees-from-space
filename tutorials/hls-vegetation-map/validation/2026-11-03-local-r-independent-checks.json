@@ -1,0 +1,99 @@
+{
+ "check": "hls-ndvi-independent",
+ "lesson_output": "pando_2024-08-27_ndvi.tif",
+ "language": "r",
+ "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+ "known_pixels": [
+  {
+   "row": 112,
+   "col": 111,
+   "x_m": 434625.0,
+   "y_m": 4264335.0,
+   "red_stored": 323,
+   "nir_stored": 2847,
+   "red_reflectance": 0.0323,
+   "nir_reflectance": 0.2847,
+   "ndvi_by_hand": 0.7962145,
+   "ndvi_lesson": 0.7962145,
+   "abs_diff": 9.89023440922665e-09
+  },
+  {
+   "row": 174,
+   "col": 30,
+   "x_m": 432195.0,
+   "y_m": 4262475.0,
+   "red_stored": 1152,
+   "nir_stored": 2159,
+   "red_reflectance": 0.1152,
+   "nir_reflectance": 0.2159,
+   "ndvi_by_hand": 0.3041377,
+   "ndvi_lesson": 0.3041377,
+   "abs_diff": 1.3816540300748414e-08
+  },
+  {
+   "row": 98,
+   "col": 168,
+   "x_m": 436335.0,
+   "y_m": 4264755.0,
+   "red_stored": 3,
+   "nir_stored": 6,
+   "red_reflectance": 0.0003,
+   "nir_reflectance": 0.0006,
+   "ndvi_by_hand": 0.3333333,
+   "ndvi_lesson": 0.3333333,
+   "abs_diff": 9.934107481068821e-09
+  },
+  {
+   "row": 147,
+   "col": 63,
+   "x_m": 433185.0,
+   "y_m": 4263285.0,
+   "red_stored": 922,
+   "nir_stored": 2217,
+   "red_reflectance": 0.0922,
+   "nir_reflectance": 0.2217,
+   "ndvi_by_hand": 0.4125518,
+   "ndvi_lesson": 0.4125518,
+   "abs_diff": 7.405483115618949e-09
+  },
+  {
+   "row": 20,
+   "col": 17,
+   "x_m": 431805.0,
+   "y_m": 4267095.0,
+   "red_stored": 458,
+   "nir_stored": 1362,
+   "red_reflectance": 0.0458,
+   "nir_reflectance": 0.1362,
+   "ndvi_by_hand": 0.4967033,
+   "ndvi_lesson": 0.4967033,
+   "abs_diff": 1.9649887272876754e-10
+  },
+  {
+   "row": 97,
+   "col": 97,
+   "x_m": 434205.0,
+   "y_m": 4264785.0,
+   "red_stored": 689,
+   "nir_stored": 2702,
+   "red_reflectance": 0.0689,
+   "nir_reflectance": 0.2702,
+   "ndvi_by_hand": 0.5936302,
+   "ndvi_lesson": 0.5936302,
+   "abs_diff": 2.9178327531909076e-09
+  }
+ ],
+ "known_pixels_max_abs_diff": 1.3816540300748414e-08,
+ "known_pixels_pass": true,
+ "hls_vi_comparison": {
+  "granule_found": true,
+  "file": "HLS-VI.L30.T12SVH.2024240T180211.v2.0.NDVI.tif",
+  "same_grid": true,
+  "pixels_compared": 49771,
+  "mean_diff": 0.0,
+  "mean_abs_diff": 2.4e-05,
+  "max_abs_diff": 5e-05,
+  "pearson_r": 1.0,
+  "vi_scale": 0.0001
+ }
+}

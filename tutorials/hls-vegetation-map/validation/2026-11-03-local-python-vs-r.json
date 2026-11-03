@@ -1,0 +1,18 @@
+{
+ "check": "python-vs-r",
+ "same_granule_set": true,
+ "same_selected_granule": true,
+ "selected_granule": "HLS.L30.T12SVH.2024240T180211.v2.0",
+ "same_grid": true,
+ "nodata": {
+  "python": NaN,
+  "r": NaN
+ },
+ "identical_valid_masks": true,
+ "valid_pixels": 50168,
+ "max_abs_diff": 0.0,
+ "pixels_above_tolerance": 0,
+ "summary_differences": {},
+ "tolerance": 1e-06,
+ "passed": true
+}

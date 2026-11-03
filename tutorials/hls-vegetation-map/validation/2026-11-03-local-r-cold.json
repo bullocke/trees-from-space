@@ -1,0 +1,41 @@
+{
+ "notebook": "tutorials/hls-vegetation-map/hls-vegetation-map-r.ipynb",
+ "language": "r",
+ "platform": "local",
+ "label": "cold",
+ "run_utc": "2026-11-03T21:56:09+00:00",
+ "outcome": "passed",
+ "wall_time_s": 54.3,
+ "peak_kernel_rss_mb": 320.1,
+ "new_cache_mb": 0.356,
+ "new_cache_files": 33,
+ "kernel": "tfs-r",
+ "commit": "c58dc42-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "hls-vegetation-map",
+  "language": "r",
+  "platform": "local",
+  "run_utc": "2026-11-03T21:57:03+00:00",
+  "network": true,
+  "files_downloaded": 31,
+  "files_cached": 0,
+  "granules_considered": 29,
+  "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+  "aoi_pixels": 50175,
+  "clear_land_pixels": 44488,
+  "clear_fraction": 1,
+  "ndvi_median": 0.5402,
+  "ndvi_p25": 0.4,
+  "ndvi_p75": 0.6372,
+  "elapsed_s": 50.1,
+  "versions": {
+   "r": "4.5.3",
+   "terra": "1.9.34",
+   "sf": "1.1.0",
+   "rstac": "1.0.1",
+   "gdal": "3.12.3"
+  }
+ }
+}

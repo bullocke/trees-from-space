@@ -1,0 +1,19 @@
+{
+ "check": "hls-access-comparison",
+ "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+ "files": [
+  "Fmask",
+  "red",
+  "nir"
+ ],
+ "window_read": {
+  "seconds": 3.49,
+  "received_mb_approx": 0.474
+ },
+ "full_download": {
+  "seconds": 4.04,
+  "received_mb_approx": 55.613,
+  "file_mb": 53.046
+ },
+ "note": "Host network counters; approximate. One granule, three files."
+}

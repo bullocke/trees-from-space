@@ -26,6 +26,8 @@
 # tfs-r kernel; override with TFS_PYTHON_ENV or TFS_R_KERNEL before sbatch.
 # Set TFS_CACHE_DIR / TFS_OUTPUT_DIR in the submitting shell to use the same
 # folders as your OnDemand session.
+# Contributors: TFS_RECORD=1 sbatch ... runs the notebook through
+# scripts/validate_notebook.py and records the result.
 
 set -euo pipefail
 
@@ -62,7 +64,14 @@ executed="logs/notebooks/${name}-${SLURM_JOB_ID:-manual}.ipynb"
 
 echo "job=${SLURM_JOB_ID:-none} partition=${SLURM_JOB_PARTITION:-none} started=$(date -Is)"
 echo "notebook=$NOTEBOOK kernel=$KERNEL"
-papermill --kernel "$KERNEL" --cwd "$(dirname "$NOTEBOOK")" \
-    --log-output --no-progress-bar "$NOTEBOOK" "$executed"
-echo "executed copy: $executed"
+if [[ "${TFS_RECORD:-0}" == "1" ]]; then
+    # Validation mode: run through the validator, which prints a JSON record
+    # (runtime, memory, data read, summary) and saves it under validation/.
+    python scripts/validate_notebook.py "$NOTEBOOK" --label dtn --record \
+        --executed-dir logs/notebooks
+else
+    papermill --kernel "$KERNEL" --cwd "$(dirname "$NOTEBOOK")" \
+        --log-output --no-progress-bar "$NOTEBOOK" "$executed"
+    echo "executed copy: $executed"
+fi
 echo "finished=$(date -Is)"

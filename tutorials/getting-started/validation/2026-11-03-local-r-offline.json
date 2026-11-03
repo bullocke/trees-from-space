@@ -1,0 +1,38 @@
+{
+ "notebook": "tutorials/getting-started/getting-started-r.ipynb",
+ "language": "r",
+ "platform": "local",
+ "label": "offline",
+ "run_utc": "2026-11-03T21:54:39+00:00",
+ "outcome": "passed",
+ "wall_time_s": 4.6,
+ "peak_kernel_rss_mb": 251.8,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-r",
+ "commit": "c58dc42",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "notebook": "getting-started-r",
+  "run_utc": "2026-11-03T21:54:43+00:00",
+  "platform": "local",
+  "packages": {
+   "R": "4.5.3",
+   "terra": "1.9.34",
+   "sf": "1.1.0",
+   "rstac": "1.0.1",
+   "jsonlite": "2.0.0",
+   "gdal": "3.12.3"
+  },
+  "missing_packages": [],
+  "paths_writable": true,
+  "network": false,
+  "netrc": {
+   "present": true,
+   "private": false,
+   "has_earthdata": true
+  },
+  "data_access": "skipped (offline)"
+ }
+}
