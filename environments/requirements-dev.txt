@@ -1,0 +1,6 @@
+# Contributor tools (not needed by learners). Install into the tfs-python
+# environment with:  <prefix>/bin/python -m pip install -r environments/requirements-dev.txt
+pytest>=8
+nbstripout>=0.8
+black>=25
+ruff>=0.14
