@@ -14,7 +14,7 @@ Commits were read on 2026-11-03 with `git ls-remote`. None of the upstream workf
 | [nasa/GEDI-Data-Resources](https://github.com/nasa/GEDI-Data-Resources) | `3a793323274c04b4d226009014dbc01a5d252a11` | Apache-2.0 | `README.md` | Anticipating GEDI environment needs |
 | [ASFOpenSARlab/NISAR_Cookbook](https://github.com/ASFOpenSARlab/NISAR_Cookbook) | `34996e5e7e748ea74666f287398e222f11079197` | Apache-2.0 | `LICENSE` | Anticipating NISAR environment needs |
 | [microsoft/PlanetaryComputerExamples](https://github.com/microsoft/PlanetaryComputerExamples) | `61026bcd725387944f189bc4873f76bda51c2268` | MIT | `LICENSE` | Planned STAC lesson |
-| [boettiger-lab/earthdatalogin](https://github.com/boettiger-lab/earthdatalogin) | CRAN 0.0.5 (2026-06-19) | MIT | `NAMESPACE`, `R/edl_search.R`, `R/edl_netrc.R` | R authentication and search |
+| [boettiger-lab/earthdatalogin](https://github.com/boettiger-lab/earthdatalogin) | CRAN 0.0.5 (2026-06-19) | MIT | `NAMESPACE`, `R/edl_search.R`, `R/edl_netrc.R` | Evaluated for R access; not used (see below) |
 
 ## HLS vegetation map (`tutorials/hls-vegetation-map/`)
 
@@ -24,7 +24,7 @@ The lesson's code is original. It follows the overall workflow of the NASA LP DA
 - **Scale factors are read, not assumed.** The upstream Python tutorial hard-codes 0.0001. The lessons read the scale and offset stored with each band and fall back to the documented value only with a visible note. The upstream R tutorial takes the same approach.
 - **The study area decides which scene to use.** The lessons rank granules by the clear-pixel fraction inside the study area rather than by tile-wide cloud cover, and they read only the study-area window of each file.
 - **Maps are static.** Matplotlib (Python) and `terra::plot` (R) replace the hvplot and dygraphs widgets, so the figures render the same way on CHPC, in Colab, and on GitHub.
-- **R authentication uses the learner's own credentials.** `earthdatalogin::edl_netrc()` writes a shared public account when called without arguments, so the R lesson points GDAL at `~/.netrc` directly.
+- **The R lesson searches NASA's STAC catalog and uses the learner's own credentials.** The upstream R tutorial uses rstac with NASA's CMR-STAC endpoint and `earthdatalogin` for authentication. The lesson keeps rstac and CMR-STAC, which returned the same granules as the Python lesson's `earthaccess` search, but does not use `earthdatalogin`. Its `edl_search()` is documented as an unsupported fallback, and both `edl_search()` and `edl_netrc()` write a shared public Earthdata account when they find no credentials at the package's own netrc path. The R lesson instead points GDAL at `~/.netrc` through environment variables and copies study-area windows with GDAL's `translate` tool (`sf::gdal_utils()`), which keeps the stored values and metadata. The resulting cache files are identical to those the Python lesson writes, so the two lessons share a cache.
 
 ## Data and product documentation
 

@@ -202,7 +202,6 @@ def main(argv: list[str] | None = None) -> int:
     parameters = {name: parse_value(value) for name, value in args.parameter}
     if args.offline:
         os.environ["TFS_OFFLINE"] = "1"
-    os.environ.setdefault("MPLBACKEND", "Agg")
 
     stamp = datetime.now(UTC)
     args.executed_dir.mkdir(parents=True, exist_ok=True)

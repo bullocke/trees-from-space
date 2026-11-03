@@ -36,7 +36,7 @@ The getting-started notebook confirms that the file exists, that only you can re
 
 ## Using R
 
-The R lessons use the same `~/.netrc`. Do not call `earthdatalogin::edl_netrc()` without arguments: when it finds no credentials in its own location, it writes a shared public account and points GDAL at it, so your data requests would no longer use your account. The R lessons set the GDAL options that point to `~/.netrc` explicitly.
+The R lessons use the same `~/.netrc`, through GDAL options set at the top of each notebook. They do not need the `earthdatalogin` package. If you use it elsewhere, do not call `earthdatalogin::edl_netrc()` or `edl_search()` without your own username and password: when they find no credentials in the package's own location, they write a shared public account and point GDAL at it, so your data requests would no longer use your account.
 
 ## Using Colab
 

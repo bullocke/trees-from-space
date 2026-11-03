@@ -50,7 +50,6 @@ export PYTHONNOUSERSITE=1
 # report "proj_create_from_database: Open of .../share/proj failed".
 export GDAL_DATA="$TFS_PYTHON_ENV/share/gdal"
 export PROJ_DATA="$TFS_PYTHON_ENV/share/proj"
-export MPLBACKEND=Agg
 
 case "$NOTEBOOK" in
     *-r.ipynb) KERNEL="${TFS_R_KERNEL:-tfs-r}" ;;

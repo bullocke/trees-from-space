@@ -1,0 +1,27 @@
+# Trees from Space: R environment for the R lessons (Jupyter IRkernel).
+#
+# Create (CHPC: run on a login node after `module purge; module load miniforge3`):
+#   mamba env create -p <prefix>/tfs-r -f environments/r-base.yml
+# and register the kernel from the Python environment:
+#   <python-prefix>/bin/python scripts/install_kernels.py --r-prefix <prefix>/tfs-r
+#
+# GDAL is pinned to the same minor version as the Python environment. The R
+# lessons search NASA's catalog through its STAC interface with rstac and read
+# data with GDAL (terra and sf) using ~/.netrc, so earthdatalogin is not needed.
+name: tfs-r
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - r-base=4.5
+  - libgdal-core=3.12
+  # Geospatial: rasters (terra), vectors and GDAL utilities (sf)
+  - r-terra
+  - r-sf
+  # Catalog search and JSON
+  - r-rstac
+  - r-jsonlite
+  # Notebook kernel
+  - r-irkernel
+  # Recommended package; without it, loading terra prints many warnings
+  - r-codetools
