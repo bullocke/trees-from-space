@@ -1,0 +1,78 @@
+# Contributing
+
+This guide covers how lessons are written, organized, and validated. Learners do not need it. They should start with the [README](../README.md) and the [getting-started guides](getting-started/).
+
+## Lesson conventions
+
+Each lesson answers one question with one primary data access route and produces one useful output. Aim for 15 to 30 minutes of learner activity after environment setup, and report download and queue time separately. Split longer material into access, analysis, and optional scaling lessons.
+
+Every lesson follows the same sequence, which the [templates](../templates/) lay out:
+
+1. **Question and outcome.** State the task, show the expected result (a committed PNG), and list two or three learning objectives.
+2. **Before starting.** Link the setup guides and list prerequisites, the tested environments, account requirements, expected data volume, and approximate runtime.
+3. **Dataset or tool in brief.** Explain the measured or estimated quantity, units, spatial and temporal support, coverage, and one or two limits on interpretation. Method lessons describe assumptions and required inputs instead.
+4. **Settings.** Put every learner-editable value in one cell tagged `parameters`: site, dates, product and version, variables, and a small request limit.
+5. **Find and inspect.** Search, show a short results table, and check coverage and metadata before retrieving data.
+6. **Access and prepare.** Retrieve only what the lesson needs, apply scale factors and quality rules, handle missing values, and align grids where required.
+7. **Visualize and analyze.** Produce one main figure or map and a simple summary tied to the opening question.
+8. **Save and adapt.** Export the result with provenance, suggest one small exercise, and link further reading.
+
+### Files and names
+
+| Location | Purpose |
+| --- | --- |
+| `tutorials/<topic>/<topic>-python.ipynb` | Python lesson. The topic is in the file name so that Colab tabs and downloaded copies stay distinguishable. |
+| `tutorials/<topic>/<topic>-r.ipynb` | Matching R lesson, where implemented |
+| `tutorials/<topic>/README.md` | Product references, requirements, support status, and the validation record |
+| `tutorials/<topic>/figures/` | Small committed figures, including the expected result |
+| `tutorials/README.md` | Tutorial index |
+| `examples/sites.geojson` | Shared study areas with stable `site_id` values |
+| `environments/` | Environment specifications and lockfiles |
+| `scripts/` | Batch entry points, validation tools, and Slurm templates |
+
+Shared helper code (`helpers/python/`, `helpers/R/`) is added only after two completed lessons need the same function. Until then, lessons keep their logic visible in the notebook.
+
+### Code style
+
+- Use descriptive variable names, small cells, and ordinary functions from established packages.
+- Show the search, quality filtering, and analysis steps rather than hiding them in helpers.
+- Explain coordinate order, date formats, units, and file paths where they first appear.
+- Notebooks use `print` for messages meant for learners. Scripts in `scripts/` use `logging`, type hints, and Black formatting (line length 88).
+- Read paths from `TFS_DATA_DIR`, `TFS_CACHE_DIR`, and `TFS_OUTPUT_DIR`, with defaults under the repository root (found through the `.tfs-root` marker file).
+- Keep TLS verification on. Never set `GDAL_HTTP_UNSAFESSL`.
+
+### Data handling
+
+- Keep collection identifiers, versions, variables, and dates explicit.
+- Distinguish a catalog's search footprint from the pixels or observations actually available inside the study area.
+- Teach units, scale factors, offsets, missing values, and quality flags before computing indices or statistics.
+- Prefer bounded requests. Show the number of files and the estimated transfer before a substantial download.
+- Write every cached file under a temporary name and rename it when complete, so an interrupted run never leaves a partial file that looks valid. A second run must reuse the cache without contacting the provider.
+- Save provenance next to outputs: product and version, granule or item IDs, dates, quality rules, processing settings, package versions, and retrieval time. Never save credentials or expiring signed URLs.
+- Export rasters as Cloud Optimized GeoTIFF, multidimensional data as NetCDF or Zarr, and small tables as CSV with units in the column names.
+
+## Execution platforms
+
+CHPC compute nodes, including OnDemand interactive sessions, have no direct internet access. Every lesson that retrieves remote data must therefore work in two stages that use the same notebook: a run on a node with internet access fills the cache, and a run on a compute node reuses it offline. [The CHPC guide](getting-started/chpc.md) documents both routes. Colab and local runs do both stages in one pass.
+
+## Validation checklist
+
+A lesson is ready for learners when all of the following hold. Record each run in the lesson README and the tutorial index.
+
+- [ ] It runs from a fresh kernel, top to bottom, using the documented environment and only the stated prerequisites.
+- [ ] A second run reuses the cache, and an offline run (`TFS_OFFLINE=1`) completes from the cache.
+- [ ] Empty searches, missing credentials, offline runs without a cache, and results with no valid pixels each produce a clear message.
+- [ ] Units, dimensions, coordinate reference systems, coverage, and valid-observation counts are sensible. A known pixel or footprint is checked against the source data or an independent calculation.
+- [ ] Python and R versions agree within a stated tolerance where both exist (`scripts/compare_outputs.py`).
+- [ ] The map and plot have readable labels, units, and legends, with a saved static figure.
+- [ ] Download size, runtime, peak memory, product version, and validation date are recorded for each platform tested.
+- [ ] `pytest tests/` passes: no credentials, personal paths, or notebook outputs in committed files.
+- [ ] References, dataset citations, and upstream attribution ([upstream-resources.md](upstream-resources.md)) are present.
+
+Each language and platform combination is marked tested (with date and environment) or untested. Do not add an Open in Colab link or a CHPC command until it has run successfully on that platform.
+
+## Git
+
+- Add files individually and write descriptive commit messages.
+- Strip notebook outputs before committing (`nbstripout <notebook>`).
+- Never commit data, caches, outputs, credentials, or machine-specific configuration.

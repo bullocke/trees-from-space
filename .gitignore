@@ -1,0 +1,48 @@
+# Local data, caches, and outputs (configurable roots; never committed)
+/data/
+/cache/
+/outputs/
+/logs/
+/references/
+
+# Environments and tool caches
+/.micromamba/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.Rhistory
+.RData
+.Rproj.user/
+
+# Raster and array data, wherever it appears
+*.tif
+*.tiff
+*.h5
+*.he5
+*.nc
+*.zarr/
+*.laz
+*.zip
+*.parquet
+
+# Credentials and machine-specific configuration
+.netrc
+_netrc
+.env
+*.credentials
+scripts/chpc/env.sh
+private-patterns.txt
+
+# Agent and project-owner files (kept local by decision)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+trees_from_space_getting_started.md
+.vscode/
+
+# Logs and Windows metadata
+*.log
+*.out
+*:Zone.Identifier
