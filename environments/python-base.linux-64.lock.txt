@@ -1,5 +1,5 @@
-# Trees from Space tfs-python environment, exact versions validated on 2026-11-03
-# (local WSL run of the getting-started notebook). Recreate on 64-bit Linux with:
+# Trees from Space tfs-python environment, exact versions validated on 2026-11-04
+# (local WSL runs of the getting-started, HLS, and Sentinel-2 notebooks). Recreate on 64-bit Linux with:
 #   mamba create -p <prefix>/tfs-python --file environments/python-base.linux-64.lock.txt
 # platform: linux-64
 @EXPLICIT
@@ -333,5 +333,30 @@ https://conda.anaconda.org/conda-forge/noarch/papermill-2.7.0-pyhd8ed1ab_0.conda
 https://conda.anaconda.org/conda-forge/noarch/setuptools-84.2.1-pyhe730653_0.conda#d41f95b8f1553165b2cc2f37162dac9c
 https://conda.anaconda.org/conda-forge/noarch/wheel-0.48.0-pyhd8ed1ab_0.conda#9a2124517bfd5d792e0f7b86eefdfeb8
 https://conda.anaconda.org/conda-forge/noarch/pip-26.2.2-pyh8b19718_2.conda#475fb40617684d16415f574187bc974b
+https://conda.anaconda.org/conda-forge/noarch/pystac-core-1.15.2-pyhcf101f3_0.conda#152986b0424e3e8deddce283354d170a
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-raster-1.1.1-pyhcf101f3_0.conda#da866f00a4f6ad13d2c532e550a09377
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-classification-2.0.1-pyhcf101f3_0.conda#3f3421dbf3ea847fa48eb00a6a88bef0
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-datacube-2.2.1-pyhcf101f3_0.conda#c78adc1476402329e655c9ba61e424a8
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-projection-2.0.1-pyhcf101f3_0.conda#cb45f62be547252c74bb824dff57f761
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-view-1.0.1-pyhcf101f3_0.conda#2762663c40d62569991df13cde22466a
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-eo-1.1.1-pyhcf101f3_0.conda#906ae840cecc53214ecfbe7f4dc7d45d
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-file-2.1.1-pyhcf101f3_0.conda#c4eeb8c7e5edd1ff97a104bf847fa87f
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-grid-1.1.1-pyhcf101f3_0.conda#072c0fd7b47fa116879d969978e90286
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-item-assets-1.0.1-pyhcf101f3_0.conda#6d925150a33dadfe459bf28d475ddb51
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-label-1.0.2-pyhcf101f3_0.conda#a34b8d0300d4d50e5c93a67c1f0d6170
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-mgrs-1.0.1-pyhcf101f3_0.conda#d0cd0523f6ade7ed663a377d294a8256
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-mlm-1.4.1-pyhcf101f3_0.conda#c287041aa8622f85325ab2554dbe57cc
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-pointcloud-1.0.1-pyhcf101f3_0.conda#72787ba6f1dacb821da17975747b366b
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-render-2.0.0-pyhcf101f3_0.conda#1629dbf5dc5b1a655018953b55538f1f
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-sar-1.0.1-pyhcf101f3_0.conda#09a9ad3ea833e20edbe4de9b7b706509
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-sat-1.0.1-pyhcf101f3_0.conda#50f9f2eee614fbaaccee422e989a170b
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-scientific-1.0.1-pyhcf101f3_0.conda#4ca00de8b9ff64a84425af7938b4e034
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-storage-2.0.1-pyhcf101f3_0.conda#c9697fb59967b3c5d9781d18f2955170
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-table-1.2.1-pyhcf101f3_0.conda#8e7e71d6fa90b315f0ceafe56241a951
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-timestamps-1.1.1-pyhcf101f3_0.conda#9f9dbfc1679d450cd3d39131f6dc3cf1
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-version-1.2.1-pyhcf101f3_0.conda#e296ea1aa3e76bb1ff99c2dda0437c67
+https://conda.anaconda.org/conda-forge/noarch/pystac-ext-xarray-assets-1.0.1-pyhcf101f3_0.conda#836aa5939d7dfd0431998587469066ca
+https://conda.anaconda.org/conda-forge/noarch/pystac-1.15.2-pyh5ded981_1.conda#14b10b0cc347aa7b1d1a87f89df68e66
+https://conda.anaconda.org/conda-forge/noarch/pystac-client-0.9.1-pyhd8ed1ab_0.conda#011b2f82e74cd7ae2c5feba0e13d18cd
 https://conda.anaconda.org/conda-forge/noarch/snuggs-1.4.7-pyhd8ed1ab_2.conda#9aa358575bbd4be126eaa5e0039f835c
 https://conda.anaconda.org/conda-forge/linux-64/rasterio-1.5.0-py312heb112dd_1.conda#38f624a32029e9fced9ed40fa8c644db
