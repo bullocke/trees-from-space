@@ -58,7 +58,10 @@ New lessons sometimes add packages to the specification; each lesson's README sa
 
 ```bash
 mamba env update -p ~/envs/tfs-python -f environments/python-base.yml
+mamba env update -p ~/envs/tfs-r -f environments/r-base.yml   # R lessons only
 ```
+
+mamba lists the changes and waits for you to type `y` before applying them. The getting-started notebooks report any package that is still missing.
 
 For results you need to reproduce exactly, remove the environment and create it again instead, from the specification or from the lockfile. Updates in place can leave versions that differ from the ones the lessons were tested with.
 

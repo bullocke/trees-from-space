@@ -8,6 +8,8 @@
 # GDAL is pinned to the same minor version as the Python environment. The R
 # lessons search NASA's catalog through its STAC interface with rstac and read
 # data with GDAL (terra and sf) using ~/.netrc, so earthdatalogin is not needed.
+# The GEDI lesson calls NASA Harmony's web API with httr2 and reads HDF5 files
+# with hdf5r (added 2026-11-04).
 name: tfs-r
 channels:
   - conda-forge
@@ -21,6 +23,12 @@ dependencies:
   # Catalog search and JSON
   - r-rstac
   - r-jsonlite
+  # Web requests (NASA Harmony; openssl names cached requests) and HDF5 files
+  # (GEDI); bit64 holds 64-bit IDs
+  - r-httr2
+  - r-openssl
+  - r-hdf5r
+  - r-bit64
   # Notebook kernel
   - r-irkernel
   # Recommended package; without it, loading terra prints many warnings
