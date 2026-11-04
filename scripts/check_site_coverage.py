@@ -8,7 +8,7 @@ and no login is needed):
   granules whose tile-wide cloud cover is below a threshold, and the MGRS
   tiles that intersect the box (HLS granules are tiled)
 - GEDI L2A v002 and L4A v2.1 footprint granules (whole mission)
-- NISAR GCOV (beta and provisional releases)
+- NISAR GCOV (beta and provisional releases) and GUNW (provisional)
 - MODIS MOD13Q1 v061, Daymet V4R1 daily, and ECOSTRESS LSTE v002 for a year
 - Sentinel-2 L2A items through the Earth Search STAC API
 - NEON airborne lidar and canopy height years, for NEON sites
@@ -46,6 +46,7 @@ PRODUCTS = [
     ("GEDI L4A v2.1", "GEDI_L4A_AGB_Density_V2_1_2056", "2.1", True),
     ("NISAR GCOV beta", "NISAR_L2_GCOV_BETA_V1", None, True),
     ("NISAR GCOV provisional", "NISAR_L2_GCOV_PROVISIONAL_V1", None, True),
+    ("NISAR GUNW provisional", "NISAR_L2_GUNW_PROVISIONAL_V1", None, True),
     ("MODIS MOD13Q1 v061", "MOD13Q1", "061", False),
     ("Daymet V4R1 daily", "Daymet_Daily_V4R1_2129", "4.1", False),
     ("ECOSTRESS LSTE v002", "ECO_L2T_LSTE", "002", False),

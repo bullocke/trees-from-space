@@ -1,0 +1,80 @@
+[
+ {
+  "site_id": "cowlitz",
+  "name": "Managed forest near Pigeon Springs, Cowlitz County, Washington",
+  "bbox": [
+   -122.673,
+   46.009,
+   -122.588,
+   46.068
+  ],
+  "hls_tiles": [
+   "T10TER",
+   "T10TES"
+  ],
+  "hls_summer": {
+   "2021": {
+    "HLSL30": {
+     "granules": 16,
+     "low_cloud": 7
+    },
+    "HLSS30": {
+     "granules": 44,
+     "low_cloud": 21
+    }
+   },
+   "2022": {
+    "HLSL30": {
+     "granules": 27,
+     "low_cloud": 17
+    },
+    "HLSS30": {
+     "granules": 49,
+     "low_cloud": 31
+    }
+   },
+   "2023": {
+    "HLSL30": {
+     "granules": 28,
+     "low_cloud": 18
+    },
+    "HLSS30": {
+     "granules": 41,
+     "low_cloud": 25
+    }
+   },
+   "2024": {
+    "HLSL30": {
+     "granules": 26,
+     "low_cloud": 5
+    },
+    "HLSS30": {
+     "granules": 43,
+     "low_cloud": 16
+    }
+   },
+   "2025": {
+    "HLSL30": {
+     "granules": 29,
+     "low_cloud": 12
+    },
+    "HLSS30": {
+     "granules": 54,
+     "low_cloud": 18
+    }
+   }
+  },
+  "products": {
+   "GEDI L2A v002": 64,
+   "GEDI L4A v2.1": 64,
+   "NISAR GCOV beta": 15,
+   "NISAR GCOV provisional": 75,
+   "NISAR GUNW provisional": 72,
+   "MODIS MOD13Q1 v061": 24,
+   "Daymet V4R1 daily": 7,
+   "ECOSTRESS LSTE v002": 651
+  },
+  "sentinel2_items": 58,
+  "neon_aop_years": {}
+ }
+]

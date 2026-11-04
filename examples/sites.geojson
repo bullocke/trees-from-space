@@ -75,6 +75,43 @@
      ]
     ]
    }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "site_id": "cowlitz",
+    "name": "Managed forest near Pigeon Springs, Cowlitz County, Washington",
+    "description": "About 6.6 km box centered at 46.039 N, 122.631 W in managed conifer forest of mixed stand ages, with clearcut harvests during 2026. It lies about 50 km west of Wind River and on the same NISAR track and frame (172, descending, frame 65), which makes it the change-detection site for the NISAR lesson.",
+    "neon_site": null,
+    "hls_tile": "T10TES"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -122.673,
+       46.009
+      ],
+      [
+       -122.588,
+       46.009
+      ],
+      [
+       -122.588,
+       46.068
+      ],
+      [
+       -122.673,
+       46.068
+      ],
+      [
+       -122.673,
+       46.009
+      ]
+     ]
+    ]
+   }
   }
  ]
 }
