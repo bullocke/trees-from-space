@@ -76,7 +76,7 @@ A lesson is ready for learners when all of the following hold. Record each run i
 - [ ] A second run reuses the cache, and an offline run (`TFS_OFFLINE=1`) completes from the cache.
 - [ ] Empty searches, missing credentials, offline runs without a cache, and results with no valid pixels each produce a clear message.
 - [ ] Units, dimensions, coordinate reference systems, coverage, and valid-observation counts are sensible. A known pixel or footprint is checked against the source data or an independent calculation.
-- [ ] Python and R versions agree within a stated tolerance where both exist (`scripts/compare_outputs.py`).
+- [ ] Python and R versions agree within a stated tolerance where both exist (`scripts/compare_outputs.py` for raster results, `scripts/compare_footprints.py` for GEDI footprints).
 - [ ] The map and plot have readable labels, units, and legends, with a saved static figure.
 - [ ] Download size, runtime, peak memory, product version, and validation date are recorded for each platform tested.
 - [ ] `pytest tests/` passes: no credentials, personal paths, or notebook outputs in committed files.
