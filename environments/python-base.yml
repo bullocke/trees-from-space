@@ -6,7 +6,7 @@
 #
 # Minor versions of the geospatial stack are pinned: it keeps the environment
 # reproducible and keeps the dependency solve small enough for an 8 GB laptop.
-# Packages for later lessons (HDF5, xarray) are added when those lessons
+# Packages for later lessons (for example xarray) are added when those lessons
 # are implemented. The validated, exact versions are in the matching lockfile.
 name: tfs-python
 channels:
@@ -14,8 +14,9 @@ channels:
   - nodefaults
 dependencies:
   - python=3.12
-  # Data access: NASA Earthdata and STAC catalogs
+  # Data access: NASA Earthdata (search and Harmony subsetting) and STAC catalogs
   - earthaccess>=0.16
+  - harmony-py
   - pystac-client
   - requests
   # Geospatial and analysis
@@ -27,6 +28,8 @@ dependencies:
   - numpy=2.4
   - pandas=3.0
   - matplotlib=3.11
+  # HDF5 files (GEDI)
+  - h5py
   # Notebooks: the kernel, a Jupyter server for OnDemand "Custom" sessions,
   # and papermill for batch runs on a data transfer node
   - ipykernel

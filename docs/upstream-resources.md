@@ -33,6 +33,15 @@ The lesson's code is original. No upstream notebook was adapted. The design foll
 - **Use Collection 1 (`sentinel-2-c1-l2a`).** In the older `sentinel-2-l2a` collection, items flagged `earthsearch:boa_offset_applied: true` still list `offset: -0.1` in `raster:bands`, although the stored values already have the offset removed (a dense-forest red pixel is stored as 326, which is 0.0326 in reflectance). Applying the catalog's offset there gives negative reflectance. In Collection 1, the same pixel is stored as 1326, and both the catalog and the file give scale 0.0001 and offset −0.1.
 - **Citation.** The Collection 1 record's `cite-as` link is `doi:10.5270/S2_-742ikth`, which resolves to ESA's *Level-1C* TOA product. The lesson cites the Level-2A product, `doi:10.5270/S2_-znk9xsj`.
 
+## GEDI canopy height (`tutorials/gedi-canopy-height/`)
+
+The lesson's code is original. It uses NASA's [GEDI data resources](https://github.com/nasa/GEDI-Data-Resources) (commit `3a793323274c04b4d226009014dbc01a5d252a11`, Apache-2.0) and the [GEDI L2A version 3 user guide](https://lpdaac.usgs.gov/documents/2442/GEDI02_User_Guide_V3.pdf) for product structure and quality guidance, and NASA's [Harmony](https://harmony.earthdata.nasa.gov/docs) service through `harmony-py` for subsetting. Findings checked on 2026-11-04:
+
+- **Version 3 is current.** `GEDI02_A` v002 is marked complete (data to July 2025); v003 is active, with improved geolocation and consistent quality flags.
+- **Quality flag names changed.** v003 beam groups contain `l2a_quality_flag_rel3` and `l2a_quality_flag_rel2`, not `quality_flag`. The rel3 flag requires sensitivity above 0.95 over land (0.98 in tropical forest).
+- **Harmony supports GEDI L2A** (both versions) through its trajectory subsetter: spatial, temporal, and variable subsets, HDF5 output. Variables are named by full path for each beam (for example `/BEAM0101/rh`). A request for 19 granules with 88 variables returned 13 files totaling 4.9 MB. Jobs took between 1 and 10 minutes. Granules with no footprints in the box produce warnings and no file. Output files are named `<work item>_<granule>_subsetted.h5`.
+- **Fidelity.** `scripts/check_gedi_subset.py` compares Harmony's subsets with the original granules, read remotely with `earthaccess.open` and `h5py`; shot numbers, positions, RH98, and flags were identical.
+
 ## Data and product documentation
 
 | Product | Reference |
@@ -41,3 +50,4 @@ The lesson's code is original. No upstream notebook was adapted. The design foll
 | HLSS30 v2.0 | Masek, J. et al. HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily Global 30m v2.0. NASA EOSDIS LP DAAC. [doi:10.5067/HLS/HLSS30.002](https://doi.org/10.5067/HLS/HLSS30.002) |
 | HLS user guide | [HLS Product User Guide, version 2.0](https://lpdaac.usgs.gov/documents/1698/HLS_User_Guide_V2.pdf) |
 | Sentinel-2 L2A | European Space Agency (2022). Sentinel-2 MSI Level-2A BOA Reflectance [Data set]. [doi:10.5270/S2_-znk9xsj](https://doi.org/10.5270/S2_-znk9xsj) |
+| GEDI L2A v003 | Dubayah, R., Hofton, M., Blair, J., Armston, J., Tang, H., and Luthcke, S. (2026). GEDI L2A Elevation and Height Metrics Data Global Footprint Level V003. NASA LP DAAC. [doi:10.5067/GEDI/GEDI02_A.003](https://doi.org/10.5067/GEDI/GEDI02_A.003) |
