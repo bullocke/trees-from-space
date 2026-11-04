@@ -44,6 +44,14 @@ The lesson's code is original. It uses NASA's [GEDI data resources](https://gith
 - **Reading with hdf5r.** hdf5r reverses HDF5 dimensions, so `rh` (footprints by 101 percentiles in the file) arrives as a 101-row matrix with one column per footprint, and RH98 is row 99. `shot_number` (unsigned 64-bit) arrives as `bit64::integer64`, which keeps it exact.
 - **Fidelity.** `scripts/check_gedi_subset.py` compares Harmony's subsets with the original granules, read remotely with `earthaccess.open` and `h5py`; shot numbers, positions, RH98, and flags were identical.
 
+## NISAR backscatter and change (`tutorials/nisar-backscatter/`)
+
+The lesson's code is original. No upstream notebook was adapted, and the NISAR Cookbook listed above was not used for code. Product structure comes from the files themselves (dataset descriptions and attributes read with `h5py`) and from the [ASF NISAR documentation](https://nisar-docs.asf.alaska.edu/). The HDF5 paths and the remote-window approach (coordinate arrays, then a hyperslab read through `earthaccess`'s HTTPS session) follow [nice-sar](https://github.com/bullocke/nice-sar) (MIT), a NISAR library by this project's author, with one change: the lesson transforms all four corners of the study box into the map projection, not two. Findings checked on 2026-11-04 are listed in the [lesson README](../tutorials/nisar-backscatter/README.md#products-and-references). In brief:
+
+- **Maturity.** Beta GCOV is uncalibrated; for the same acquisition (2026-01-09, track 172), its HV median over the `cowlitz` box is 1.44 dB below the provisional value.
+- **Search completeness.** For one box, CMR's UMM-JSON search (used by `earthaccess`) returned 69 of 72 GUNW provisional granules that CMR reported as hits; CMR's JSON search returned all 72.
+- **Remote reads.** With 1 MB `fsspec` blocks, reading HH, HV, and the mask for a 6.6 km box moves about 15 MB per 7 GB file in about 10 s; smaller blocks move less but take longer.
+
 ## Data and product documentation
 
 | Product | Reference |
@@ -53,3 +61,6 @@ The lesson's code is original. It uses NASA's [GEDI data resources](https://gith
 | HLS user guide | [HLS Product User Guide, version 2.0](https://lpdaac.usgs.gov/documents/1698/HLS_User_Guide_V2.pdf) |
 | Sentinel-2 L2A | European Space Agency (2022). Sentinel-2 MSI Level-2A BOA Reflectance [Data set]. [doi:10.5270/S2_-znk9xsj](https://doi.org/10.5270/S2_-znk9xsj) |
 | GEDI L2A v003 | Dubayah, R., Hofton, M., Blair, J., Armston, J., Tang, H., and Luthcke, S. (2026). GEDI L2A Elevation and Height Metrics Data Global Footprint Level V003. NASA LP DAAC. [doi:10.5067/GEDI/GEDI02_A.003](https://doi.org/10.5067/GEDI/GEDI02_A.003) |
+| NISAR GCOV, provisional | NASA/JPL/NISAR (2026). NISAR Provisional Geocoded Polarimetric Covariance Product (Version 1). NASA Alaska Satellite Facility DAAC. [doi:10.5067/NIL2GCOV-P1](https://doi.org/10.5067/NIL2GCOV-P1) |
+| NISAR GUNW, provisional | NASA/JPL/NISAR (2026). NISAR Provisional Geocoded Unwrapped Interferogram Product (Version 1). NASA Alaska Satellite Facility DAAC. [doi:10.5067/NIL2GUNW-P1](https://doi.org/10.5067/NIL2GUNW-P1) |
+| NISAR documentation | [ASF NISAR documentation](https://nisar-docs.asf.alaska.edu/); [NISAR Science Users' Handbook](https://doi.org/10.48577/jpl.UD4HV3) |
