@@ -1,0 +1,41 @@
+{
+ "notebook": "tutorials/gedi-canopy-height/gedi-canopy-height-python.ipynb",
+ "language": "python",
+ "platform": "local",
+ "label": "warm",
+ "run_utc": "2026-11-04T06:22:51+00:00",
+ "outcome": "passed",
+ "wall_time_s": 8.3,
+ "peak_kernel_rss_mb": 263.4,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-python",
+ "commit": "c2c331d-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "gedi-canopy-height",
+  "language": "python",
+  "platform": "local",
+  "run_utc": "2026-11-04T06:22:59+00:00",
+  "network": true,
+  "granules": 19,
+  "subset_files": 13,
+  "subset_mb": 4.86,
+  "footprints_in_box": 5755,
+  "footprints_kept": 3938,
+  "kept_power": 2263,
+  "kept_coverage": 1675,
+  "rh98_m_median": 7.44,
+  "rh98_m_p90": 16.05,
+  "elapsed_s": 1.8,
+  "versions": {
+   "python": "3.12.16",
+   "earthaccess": "0.19.0",
+   "harmony_py": "1.8.0",
+   "h5py": "3.16.0",
+   "geopandas": "1.2.0",
+   "numpy": "2.4.6"
+  }
+ }
+}

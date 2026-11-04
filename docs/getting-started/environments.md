@@ -54,7 +54,13 @@ In Colab, the defaults are folders under `/content`.
 
 ## Updating or removing an environment
 
-To update an environment after the specification changes, remove it and create it again. Mixing updates into an existing environment makes results harder to reproduce.
+New lessons sometimes add packages to the specification; each lesson's README says when. The quickest way to add them is to update the environment in place:
+
+```bash
+mamba env update -p ~/envs/tfs-python -f environments/python-base.yml
+```
+
+For results you need to reproduce exactly, remove the environment and create it again instead, from the specification or from the lockfile. Updates in place can leave versions that differ from the ones the lessons were tested with.
 
 ```bash
 mamba env remove -p ~/envs/tfs-python

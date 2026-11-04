@@ -17,7 +17,7 @@
 
 The lesson introduces STAC, the catalog standard most cloud imagery providers now use, through one provider that needs no account. It follows the [HLS lesson](../hls-vegetation-map/)'s pattern (check the study area before reading, read only small windows into a cache that also works offline, apply documented scaling and quality rules, save with provenance) and adds two ideas: scale and offset recorded in the catalog rather than assumed, and resampling a categorical layer with nearest neighbor.
 
-**Environments created before 2026-11-04** lack `pystac-client`. Add it with `mamba install -p <prefix>/tfs-python -c conda-forge pystac-client` (on CHPC, after `module load miniforge3`), or recreate the environment from [`environments/python-base.yml`](../../environments/python-base.yml).
+**Environments created before 2026-11-04** lack `pystac-client`. From the repository folder, run `mamba env update -p <prefix>/tfs-python -f environments/python-base.yml` (on CHPC, after `module load miniforge3`), or recreate the environment as described in the [environment guide](../../docs/getting-started/environments.md).
 
 ## Products and references
 
