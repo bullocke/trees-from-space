@@ -1,0 +1,85 @@
+{
+ "check": "s2-ndvi-independent",
+ "lesson_output": "pando_2024-08-24_s2_ndvi.tif",
+ "item_id": "S2B_T12SVH_20240824T181540_L2A",
+ "known_pixels": [
+  {
+   "row": 337,
+   "col": 335,
+   "red_stored": 1301,
+   "nir_stored": 3685,
+   "red_reflectance": 0.0301,
+   "nir_reflectance": 0.2685,
+   "ndvi_by_hand": 0.7983925,
+   "ndvi_lesson": 0.7983925,
+   "abs_diff": 2.3674182392241505e-08
+  },
+  {
+   "row": 521,
+   "col": 433,
+   "red_stored": 1560,
+   "nir_stored": 2996,
+   "red_reflectance": 0.056,
+   "nir_reflectance": 0.1996,
+   "ndvi_by_hand": 0.5618153,
+   "ndvi_lesson": 0.5618153,
+   "abs_diff": 1.5017758703272932e-08
+  },
+  {
+   "row": 295,
+   "col": 541,
+   "red_stored": 1179,
+   "nir_stored": 1143,
+   "red_reflectance": 0.0179,
+   "nir_reflectance": 0.0143,
+   "ndvi_by_hand": -0.1118012,
+   "ndvi_lesson": -0.1118012,
+   "abs_diff": 2.082460204277936e-09
+  },
+  {
+   "row": 441,
+   "col": 123,
+   "red_stored": 2136,
+   "nir_stored": 2868,
+   "red_reflectance": 0.1136,
+   "nir_reflectance": 0.1868,
+   "ndvi_by_hand": 0.2436751,
+   "ndvi_lesson": 0.2436751,
+   "abs_diff": 2.043701152754096e-09
+  },
+  {
+   "row": 60,
+   "col": 102,
+   "red_stored": 1517,
+   "nir_stored": 3344,
+   "red_reflectance": 0.0517,
+   "nir_reflectance": 0.2344,
+   "ndvi_by_hand": 0.6385879,
+   "ndvi_lesson": 0.6385879,
+   "abs_diff": 1.4270947867878192e-08
+  },
+  {
+   "row": 291,
+   "col": 574,
+   "red_stored": 1024,
+   "nir_stored": 1009,
+   "red_reflectance": 0.0024,
+   "nir_reflectance": 0.0009,
+   "ndvi_by_hand": -0.4545455,
+   "ndvi_lesson": -0.4545455,
+   "abs_diff": 1.354650941420843e-08
+  }
+ ],
+ "known_pixels_max_abs_diff": 2.3674182392241505e-08,
+ "known_pixels_pass": true,
+ "hls_vi_comparison": {
+  "granule_found": true,
+  "file": "HLS-VI.S30.T12SVH.2024237T180919.v2.0.NDVI.tif",
+  "same_crs": true,
+  "pixels_compared_30m": 49761,
+  "mean_diff_s2_minus_hls": -0.028,
+  "mean_abs_diff": 0.033,
+  "p95_abs_diff": 0.1239,
+  "pearson_r": 0.978
+ }
+}

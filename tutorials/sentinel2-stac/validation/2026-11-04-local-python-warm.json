@@ -1,0 +1,42 @@
+{
+ "notebook": "tutorials/sentinel2-stac/sentinel2-stac-python.ipynb",
+ "language": "python",
+ "platform": "local",
+ "label": "warm",
+ "run_utc": "2026-11-04T05:13:14+00:00",
+ "outcome": "passed",
+ "wall_time_s": 9.3,
+ "peak_kernel_rss_mb": 372.3,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-python",
+ "commit": "580ac0e",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "sentinel2-stac",
+  "language": "python",
+  "platform": "local",
+  "run_utc": "2026-11-04T05:13:22+00:00",
+  "network": true,
+  "files_downloaded": 0,
+  "files_cached": 9,
+  "items_considered": 5,
+  "item_id": "S2B_T12SVH_20240824T181540_L2A",
+  "aoi_pixels": 451580,
+  "clear_land_pixels": 402472,
+  "clear_fraction": 1.0,
+  "ndvi_median": 0.5225,
+  "ndvi_p25": 0.363,
+  "ndvi_p75": 0.6467,
+  "elapsed_s": 2.3,
+  "versions": {
+   "python": "3.12.16",
+   "pystac_client": "0.9.1",
+   "pystac": "1.15.2",
+   "rasterio": "1.5.0",
+   "gdal": "3.12.4",
+   "numpy": "2.4.6"
+  }
+ }
+}
