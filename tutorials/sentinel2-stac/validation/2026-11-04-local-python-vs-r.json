@@ -1,0 +1,18 @@
+{
+ "check": "python-vs-r",
+ "same_granule_set": true,
+ "same_selected_granule": true,
+ "selected_granule": "S2B_T12SVH_20240824T181540_L2A",
+ "same_grid": true,
+ "nodata": {
+  "python": NaN,
+  "r": NaN
+ },
+ "identical_valid_masks": true,
+ "valid_pixels": 451570,
+ "max_abs_diff": 0.0,
+ "pixels_above_tolerance": 0,
+ "summary_differences": {},
+ "tolerance": 1e-06,
+ "passed": true
+}

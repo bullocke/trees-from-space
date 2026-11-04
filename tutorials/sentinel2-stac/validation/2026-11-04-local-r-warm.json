@@ -1,0 +1,41 @@
+{
+ "notebook": "tutorials/sentinel2-stac/sentinel2-stac-r.ipynb",
+ "language": "r",
+ "platform": "local",
+ "label": "warm",
+ "run_utc": "2026-11-04T05:52:01+00:00",
+ "outcome": "passed",
+ "wall_time_s": 10.2,
+ "peak_kernel_rss_mb": 497.7,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-r",
+ "commit": "3a1d403",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "sentinel2-stac",
+  "language": "r",
+  "platform": "local",
+  "run_utc": "2026-11-04T05:52:11+00:00",
+  "network": true,
+  "files_downloaded": 0,
+  "files_cached": 9,
+  "items_considered": 5,
+  "item_id": "S2B_T12SVH_20240824T181540_L2A",
+  "aoi_pixels": 451580,
+  "clear_land_pixels": 402472,
+  "clear_fraction": 1,
+  "ndvi_median": 0.5225,
+  "ndvi_p25": 0.363,
+  "ndvi_p75": 0.6467,
+  "elapsed_s": 5.5,
+  "versions": {
+   "r": "4.5.3",
+   "rstac": "1.0.1",
+   "terra": "1.9.34",
+   "sf": "1.1.0",
+   "gdal": "3.12.3"
+  }
+ }
+}
