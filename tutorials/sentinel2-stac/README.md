@@ -1,5 +1,7 @@
 # Seeing Pando at 10 m with Sentinel-2 and STAC
 
+[![Open the Python notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bullocke/trees-from-space/blob/main/tutorials/sentinel2-stac/sentinel2-stac-python.ipynb)
+
 | | |
 | --- | --- |
 | **Notebook** | [`sentinel2-stac-python.ipynb`](sentinel2-stac-python.ipynb) (an R version is planned) |
@@ -31,7 +33,7 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- |
-| Python | tested 2026-11-04 | untested | untested | untested |
+| Python | tested 2026-11-04 | tested 2026-11-04 | untested (optional) | tested 2026-11-04 |
 | R | planned | planned | planned | planned |
 
 ## Validation record
@@ -41,6 +43,8 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Cold (empty cache) | Passed | 13 s | 382 MB | 2.76 MB | 9 / 0 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Warm (cache) | Passed | 9 s | 372 MB | 0.00 MB | 0 / 9 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Offline (`TFS_OFFLINE=1`) | Passed | 9 s | 372 MB | 0.00 MB | 0 / 9 |
+| 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | Python 3.12.16 | Cold (empty cache) | Passed | 15 s | 360 MB | 2.76 MB | 9 / 0 |
+| 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache) | Passed | 13 s, excluding package installation | not recorded | not recorded | 9 / 0 |
 
 **Checks of the result** (2026-11-04, local):
 
@@ -49,6 +53,6 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 - **Windowed reads.** The selected scene's four 10 m band files and its SCL total about 900 MB; the lesson reads windows of about 2.8 MB in all, from five scenes.
 - **Failure messages.** Offline with an empty cache, a date window before Sentinel-2's record, and a cloudy day with the catalog filter turned off each stop with a message that says what to do.
 
-Runs recorded at commit `580ac0e`.
+Local runs were recorded at commit `580ac0e`, and the CHPC and Colab runs at `06d25f8`. All selected the same scene and gave identical NDVI statistics.
 
 Full records are in [`validation/`](validation/). Environment: [`python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt).

@@ -1,0 +1,37 @@
+{
+ "notebook": "tutorials/sentinel2-stac/sentinel2-stac-python.ipynb",
+ "language": "python",
+ "platform": "colab",
+ "label": "cold",
+ "run_utc": "2026-11-04T05:42:01+00:00",
+ "outcome": "passed",
+ "commit": "06d25f8",
+ "source": "Summary printed by the notebook's final cell in a fresh Colab session, pasted by the project owner",
+ "notes": "elapsed_s excludes package installation.",
+ "summary": {
+  "lesson": "sentinel2-stac",
+  "language": "python",
+  "platform": "colab",
+  "run_utc": "2026-11-04T05:42:01+00:00",
+  "network": true,
+  "files_downloaded": 9,
+  "files_cached": 0,
+  "items_considered": 5,
+  "item_id": "S2B_T12SVH_20240824T181540_L2A",
+  "aoi_pixels": 451580,
+  "clear_land_pixels": 402472,
+  "clear_fraction": 1.0,
+  "ndvi_median": 0.5225,
+  "ndvi_p25": 0.363,
+  "ndvi_p75": 0.6467,
+  "elapsed_s": 12.5,
+  "versions": {
+   "python": "3.13.18",
+   "pystac_client": "0.9.1",
+   "pystac": "1.15.2",
+   "rasterio": "1.5.0",
+   "gdal": "3.12.1",
+   "numpy": "2.4.6"
+  }
+ }
+}
