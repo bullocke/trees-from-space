@@ -20,10 +20,10 @@ One short paragraph on what the lesson teaches and where it fits in the sequence
 
 ## Support status
 
-| Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC OnDemand, Frisco | CHPC transfer job | Colab |
-| --- | --- | --- | --- | --- | --- |
-| Python | untested | untested | untested | untested | untested |
-| R | untested | untested | untested | untested | untested |
+| Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
+| --- | --- | --- | --- | --- |
+| Python | untested | untested | untested | untested |
+| R | untested | untested | untested | untested |
 
 ## Validation record
 

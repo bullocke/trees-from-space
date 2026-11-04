@@ -1,0 +1,38 @@
+{
+ "notebook": "tutorials/getting-started/getting-started-r.ipynb",
+ "language": "r",
+ "platform": "chpc-notchpeak-shared-short",
+ "label": "ood",
+ "run_utc": "2026-11-04T04:44:16+00:00",
+ "outcome": "passed",
+ "wall_time_s": 7.8,
+ "peak_kernel_rss_mb": 252.5,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-r",
+ "commit": "11d9a43-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "notebook": "getting-started-r",
+  "run_utc": "2026-11-04T04:44:24+00:00",
+  "platform": "chpc-notchpeak-shared-short",
+  "packages": {
+   "R": "4.5.3",
+   "terra": "1.9.34",
+   "sf": "1.1.0",
+   "rstac": "1.0.1",
+   "jsonlite": "2.0.0",
+   "gdal": "3.12.3"
+  },
+  "missing_packages": [],
+  "paths_writable": true,
+  "network": true,
+  "netrc": {
+   "present": true,
+   "private": true,
+   "has_earthdata": true
+  },
+  "data_access": "ok"
+ }
+}

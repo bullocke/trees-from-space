@@ -66,7 +66,7 @@ The coverage check found newer product versions to evaluate when the correspondi
 
 ## Execution platforms
 
-CHPC compute nodes, including OnDemand interactive sessions, have no direct internet access. Every lesson that retrieves remote data must therefore work in two stages that use the same notebook: a run on a node with internet access fills the cache, and a run on a compute node reuses it offline. [The CHPC guide](getting-started/chpc.md) documents both routes. Colab and local runs do both stages in one pass.
+Some CHPC compute nodes cannot reach the internet. OnDemand sessions on the default interactive partition could in our tests (2026-11-04), but CHPC documents interactive compute sessions as offline, and many batch partitions are. Every lesson that retrieves remote data must therefore work in two stages that use the same notebook: a run with internet access fills the cache, and any later run, including one on an offline node, reuses it. [The CHPC guide](getting-started/chpc.md) describes the transfer job that fills the cache when a session is offline. Colab and local runs do both stages in one pass.
 
 ## Validation checklist
 

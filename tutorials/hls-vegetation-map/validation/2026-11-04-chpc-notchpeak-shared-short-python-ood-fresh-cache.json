@@ -1,0 +1,41 @@
+{
+ "notebook": "tutorials/hls-vegetation-map/hls-vegetation-map-python.ipynb",
+ "language": "python",
+ "platform": "chpc-notchpeak-shared-short",
+ "label": "ood-fresh-cache",
+ "run_utc": "2026-11-04T04:28:15+00:00",
+ "outcome": "passed",
+ "wall_time_s": 75.9,
+ "peak_kernel_rss_mb": 237.3,
+ "new_cache_mb": 0.371,
+ "new_cache_files": 33,
+ "kernel": "tfs-python",
+ "commit": "11d9a43-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "hls-vegetation-map",
+  "language": "python",
+  "platform": "chpc-notchpeak-shared-short",
+  "run_utc": "2026-11-04T04:29:30+00:00",
+  "network": true,
+  "files_downloaded": 31,
+  "files_cached": 0,
+  "granules_considered": 29,
+  "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+  "aoi_pixels": 50175,
+  "clear_land_pixels": 44488,
+  "clear_fraction": 1.0,
+  "ndvi_median": 0.5402,
+  "ndvi_p25": 0.4,
+  "ndvi_p75": 0.6372,
+  "elapsed_s": 66.3,
+  "versions": {
+   "python": "3.12.16",
+   "earthaccess": "0.19.0",
+   "rasterio": "1.5.0",
+   "gdal": "3.12.4",
+   "numpy": "2.4.6"
+  }
+ }
+}

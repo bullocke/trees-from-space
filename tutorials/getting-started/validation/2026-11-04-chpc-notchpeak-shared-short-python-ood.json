@@ -1,0 +1,42 @@
+{
+ "notebook": "tutorials/getting-started/getting-started-python.ipynb",
+ "language": "python",
+ "platform": "chpc-notchpeak-shared-short",
+ "label": "ood",
+ "run_utc": "2026-11-04T04:43:27+00:00",
+ "outcome": "passed",
+ "wall_time_s": 8.4,
+ "peak_kernel_rss_mb": 184.9,
+ "new_cache_mb": 0.0,
+ "new_cache_files": 0,
+ "kernel": "tfs-python",
+ "commit": "11d9a43-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "notebook": "getting-started-python",
+  "run_utc": "2026-11-04T04:43:35+00:00",
+  "platform": "chpc-notchpeak-shared-short",
+  "python": "3.12.16",
+  "packages": {
+   "earthaccess": "0.19.0",
+   "rasterio": "1.5.0",
+   "pyproj": "3.7.2",
+   "geopandas": "1.2.0",
+   "numpy": "2.4.6",
+   "pandas": "3.0.6",
+   "matplotlib": "3.11.2",
+   "gdal": "3.12.4"
+  },
+  "missing_packages": [],
+  "paths_writable": true,
+  "network": true,
+  "netrc": {
+   "present": true,
+   "private": true,
+   "has_earthdata": true
+  },
+  "earthdata_login": "ok",
+  "data_access": "ok"
+ }
+}

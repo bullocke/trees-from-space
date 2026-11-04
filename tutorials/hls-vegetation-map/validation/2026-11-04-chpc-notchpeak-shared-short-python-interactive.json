@@ -1,0 +1,36 @@
+{
+ "notebook": "tutorials/hls-vegetation-map/hls-vegetation-map-python.ipynb",
+ "language": "python",
+ "platform": "chpc-notchpeak-shared-short",
+ "label": "interactive",
+ "run_utc": "2026-11-04T04:14:52+00:00",
+ "outcome": "passed",
+ "commit": "11d9a43",
+ "source": "Summary printed by the notebook's final cell after Run All in OnDemand Jupyter, pasted by the project owner",
+ "notes": "First OnDemand run with the current setup lines; data came from the transfer job's cache.",
+ "summary": {
+  "lesson": "hls-vegetation-map",
+  "language": "python",
+  "platform": "chpc-notchpeak-shared-short",
+  "run_utc": "2026-11-04T04:14:52+00:00",
+  "network": true,
+  "files_downloaded": 0,
+  "files_cached": 31,
+  "granules_considered": 29,
+  "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+  "aoi_pixels": 50175,
+  "clear_land_pixels": 44488,
+  "clear_fraction": 1.0,
+  "ndvi_median": 0.5402,
+  "ndvi_p25": 0.4,
+  "ndvi_p75": 0.6372,
+  "elapsed_s": 75.6,
+  "versions": {
+   "python": "3.12.16",
+   "earthaccess": "0.19.0",
+   "rasterio": "1.5.0",
+   "gdal": "3.12.4",
+   "numpy": "2.4.6"
+  }
+ }
+}

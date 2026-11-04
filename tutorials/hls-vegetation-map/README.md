@@ -29,10 +29,10 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 
 ## Support status
 
-| Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC OnDemand, Frisco | CHPC transfer job | Colab |
-| --- | --- | --- | --- | --- | --- |
-| Python | tested 2026-11-03 | untested | untested | tested 2026-11-04 | tested 2026-11-04 |
-| R | tested 2026-11-03 | untested | untested | untested | not supported yet |
+| Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
+| --- | --- | --- | --- | --- |
+| Python | tested 2026-11-03 | tested 2026-11-04 | tested 2026-11-04 | tested 2026-11-04 |
+| R | tested 2026-11-03 | tested 2026-11-04 | tested 2026-11-04 | not supported yet |
 
 ## Validation record
 
@@ -47,8 +47,12 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 | 2026-11-03 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Cache from the Python run | Passed | 12 s | 311 MB | 0.02 MB | 0 / 31 |
 | 2026-11-04 | CHPC transfer job (`notchpeak-dtn`) | Python 3.12.16 | Cold (empty cache) | Passed | 60 s (job 79 s) | not recorded | not recorded | 31 / 0 |
 | 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache) | Passed | 289 s, excluding package installation | not recorded | not recorded | 31 / 0 |
+| 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | Python 3.12.16 | Run All in Jupyter, from the transfer job's cache | Passed | 76 s | not recorded | 0.00 MB | 0 / 31 |
+| 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | Python 3.12.16 | Cold (empty cache on scratch): searched and downloaded on the compute node | Passed | 76 s | 237 MB | 0.37 MB | 31 / 0 |
+| 2026-11-04 | CHPC transfer job (`notchpeak-dtn`) | R 4.5.3 | Cache from the Python runs | Passed | 10 s | 316 MB | 0.00 MB | 0 / 31 |
+| 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | R 4.5.3 | Cache | Passed | 9 s | 319 MB | 0.00 MB | 0 / 31 |
 
-The CHPC and Colab runs selected the same granule and produced the same NDVI statistics as the local runs (median 0.5402, quartiles 0.4000 and 0.6372, 44,488 clear land pixels). Their records come from the summary each notebook prints, so memory and cache size were not measured. Reading the 31 windows took about five times longer from Colab than from CHPC or the University network.
+The CHPC and Colab runs selected the same granule and produced the same NDVI statistics as the local runs (median 0.5402, quartiles 0.4000 and 0.6372, 44,488 clear land pixels). Rows marked "not recorded" come from the summary a notebook prints, rather than from `scripts/validate_notebook.py`. The cold OnDemand run shows that the default interactive partition could reach NASA, contrary to CHPC's documentation. Reading the 31 windows took about five times longer from Colab than from CHPC or the University network.
 
 **Checks of the result** (2026-11-03, local):
 

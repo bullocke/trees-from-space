@@ -11,11 +11,11 @@ CHPC has several kinds of machines, and they differ in one way that matters for 
 | Machine | What it is for | Internet access |
 | --- | --- | --- |
 | **Login node** (e.g. `notchpeak1`) | Editing files, installing software, submitting jobs. No heavy computation. | Yes |
-| **Compute node** | Jobs scheduled through Slurm, **including OnDemand Jupyter and RStudio sessions** | **No** |
-| **Frisco node** | Interactive and graphical work started from OnDemand | Yes, for downloads (CHPC calls these visualization nodes) |
+| **OnDemand session** on `notchpeak-shared-short`, the default partition for interactive apps | Running the lessons in Jupyter | Yes, in our tests on 2026-11-04 |
+| **Other compute nodes** (batch jobs, owner partitions) | Jobs scheduled through Slurm | Often no |
 | **Data transfer node** (DTN) | Moving data, through Slurm jobs on the `notchpeak-dtn` partition | Yes, with fast connections |
 
-CHPC's [OnDemand documentation](https://www.chpc.utah.edu/documentation/software/ondemand.php) states that interactive sessions on compute nodes do not have direct internet access. A lesson that searches for and reads NASA data therefore cannot fetch that data from an ordinary OnDemand Jupyter session. The lessons handle this with a **cache**: once a run on a machine with internet access has saved the study-area data, every later run, including one on a compute node, reads the saved copy and skips the network. The two routes below differ only in where that first run happens.
+CHPC's [OnDemand documentation](https://www.chpc.utah.edu/documentation/software/ondemand.php) states that interactive sessions on compute nodes do not have direct internet access, and batch jobs on some compute partitions time out when they try to download. In our tests, however, OnDemand Jupyter sessions on the default `notchpeak-shared-short` partition searched NASA's catalog and downloaded lesson data without help. Because access can differ between partitions and can change, the lessons check it every time they run. They also keep everything they download in a **cache**: once any run with internet access has saved the study-area data, later runs read the saved copy, even on a node that cannot reach the internet.
 
 ## One-time setup
 
@@ -47,7 +47,7 @@ Do these steps once, on a login node. Connect with `ssh <uNID>@notchpeak.chpc.ut
 
    Leave out `--r-prefix ~/envs/tfs-r` if you skipped the R environment.
 
-4. **Store your Earthdata credentials** in `~/.netrc`, following the [Earthdata Login guide](earthdata-login.md). Login nodes have internet access, so Option A works there. Your home directory is shared by all CHPC machines, so compute nodes, Frisco nodes, and transfer jobs all see the same file.
+4. **Store your Earthdata credentials** in `~/.netrc`, following the [Earthdata Login guide](earthdata-login.md). Login nodes have internet access, so Option A works there. Your home directory is shared by all CHPC machines, so OnDemand sessions and transfer jobs see the same file.
 
 5. **Create a folder for batch logs.** Slurm does not create it for you.
 
@@ -73,11 +73,15 @@ Do these steps once, on a login node. Connect with `ssh <uNID>@notchpeak.chpc.ut
 3. Choose resources. For these lessons, 2 cores, 8 GB of memory, and 2 hours are plenty. The default cluster (`notchpeak`) and partition (`notchpeak-shared-short`) are designed for interactive work. Use your group's account.
 4. Click **Launch**, wait for the session to start, and click **Connect to Jupyter**.
 
-The session runs on a compute node, so it has no internet access. Run the [getting-started notebook](../tutorials/getting-started/) first: it reports whether the node can reach NASA, whether your credentials file is in place, and which route below applies.
+Run the [getting-started notebook](../tutorials/getting-started/) first. It reports whether your session can reach NASA and whether your credentials file is in place, which tells you how to run the lessons below.
 
 ## Running a lesson that downloads data
 
-### Route A (standard): fetch with a transfer job, then work in OnDemand
+### If your session can reach NASA (the usual case)
+
+Open the lesson and run it from top to bottom. The first run downloads the study-area data into the cache, and later runs reuse it.
+
+### If your session is offline: fetch the data with a transfer job first
 
 1. Open the lesson in OnDemand Jupyter and review the settings cell. If you change anything, save the notebook (*File → Save*), because the batch job reads the saved file.
 2. From a terminal on a login node (or *File → New → Terminal* in Jupyter), submit the notebook to a data transfer node:
@@ -91,10 +95,6 @@ The session runs on a compute node, so it has no internet access. Run the [getti
 4. When the job finishes, return to OnDemand and run the whole notebook (*Kernel → Restart Kernel and Run All Cells*). Cells that fetch data print `cached` and skip the network, and the analysis runs on the compute node.
 
 The transfer job uses CHPC's public data transfer settings (`notchpeak-dtn` partition, `dtn` account), so it does not draw on your group's allocation.
-
-### Route B (interactive): run everything on a Frisco node
-
-Frisco nodes can reach the internet, so a Jupyter session there can run a lesson from start to finish without a separate transfer job. Choose a Frisco node as the cluster when you launch the Jupyter app, if your OnDemand menu offers one. Frisco nodes are shared by many users, so keep to the small lesson examples there and use Route A for larger requests.
 
 ## Storage
 
@@ -120,9 +120,9 @@ rm -rf ~/trees-from-space/cache/hls
 
 | Symptom | Likely cause | What to do |
 | --- | --- | --- |
-| A cell waits, then reports that the network is unreachable | The notebook is running on a compute node with no cache yet | Use Route A or Route B above |
+| A cell reports that the machine cannot reach NASA and the cache lacks a file | The session has no internet access and the data have not been fetched yet | Fetch the data with a transfer job, as described above |
 | `sbatch: error: ... logs/...` or a job with no log | The `logs/` folder does not exist | `mkdir -p ~/trees-from-space/logs` |
 | The Jupyter session ends at once; its log says `jupyter: command not found` | The setup lines did not put the environment on `PATH` | Use the setup lines above exactly, with your environment's path. The log's `ERROR: no Jupyter` line means the path is wrong. |
 | The kernel menu lacks the Trees from Space kernels | Kernels were not registered | Run step 3 of the one-time setup |
-| Import errors or GDAL library errors | A CHPC module conflicts with the environment | Start the setup box and your terminal with `module purge` |
+| Import errors or GDAL library errors | A CHPC module conflicts with the environment | Run `module purge` in your terminal before other commands. In OnDemand, use the setup lines above, which load no modules. |
 | `Earthdata credentials not found` | No `~/.netrc` | Follow the [Earthdata Login guide](earthdata-login.md) |

@@ -10,7 +10,7 @@ Register at [urs.earthdata.nasa.gov](https://urs.earthdata.nasa.gov/users/new) a
 
 The lessons, the Python and R geospatial libraries, and batch jobs all read your credentials from one file, `~/.netrc`, in your home directory. You create it once on each system you use (your computer, CHPC, or a Colab session). Your password never appears in a notebook.
 
-**Option A: let `earthaccess` write the file.** On a machine with internet access (on CHPC, a login node or a Frisco node, not a compute node), activate the Trees from Space Python environment and run:
+**Option A: let `earthaccess` write the file.** On a machine with internet access (on CHPC, a login node), activate the Trees from Space Python environment and run:
 
 ```bash
 python -c "import earthaccess; earthaccess.login(strategy='interactive', persist=True)"

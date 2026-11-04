@@ -11,11 +11,11 @@
 #
 # Run a Trees from Space notebook on a CHPC data transfer node (DTN).
 #
-# Compute nodes, including OnDemand Jupyter sessions, cannot reach the
-# internet. This job runs the saved notebook, with its own settings, on a node
-# that can, so the data it fetches land in the lesson cache. Then rerun the
-# notebook in OnDemand: cells that fetch data find the cache and skip the
-# network. The partition, QOS, and account above are CHPC's public data
+# Use this when your OnDemand session cannot reach the internet (some CHPC
+# compute nodes cannot). This job runs the saved notebook, with its own
+# settings, on a node that can, so the data it fetches land in the lesson
+# cache. Then rerun the notebook in OnDemand: cells that fetch data find the
+# cache and skip the network. The partition, QOS, and account above are CHPC's public data
 # transfer settings, so the job does not use your group's allocation.
 #
 # Submit from the repository root (Slurm does not create the log folder):
