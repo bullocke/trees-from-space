@@ -1,0 +1,36 @@
+{
+ "notebook": "tutorials/gedi-canopy-height/gedi-canopy-height-python.ipynb",
+ "language": "python",
+ "platform": "colab",
+ "label": "cold",
+ "run_utc": "2026-11-04T14:05:59+00:00",
+ "outcome": "passed",
+ "commit": "c9f5406",
+ "source": "Summary printed by the notebook's final cell in a fresh Colab session, pasted by the project owner",
+ "notes": "elapsed_s excludes package installation and includes a new Harmony job.",
+ "summary": {
+  "lesson": "gedi-canopy-height",
+  "language": "python",
+  "platform": "colab",
+  "run_utc": "2026-11-04T14:05:59+00:00",
+  "network": true,
+  "granules": 19,
+  "subset_files": 13,
+  "subset_mb": 4.86,
+  "footprints_in_box": 5755,
+  "footprints_kept": 3938,
+  "kept_power": 2263,
+  "kept_coverage": 1675,
+  "rh98_m_median": 7.44,
+  "rh98_m_p90": 16.05,
+  "elapsed_s": 304.6,
+  "versions": {
+   "python": "3.13.18",
+   "earthaccess": "0.19.0",
+   "harmony_py": "1.8.0",
+   "h5py": "3.14.0",
+   "geopandas": "1.2.0",
+   "numpy": "2.4.6"
+  }
+ }
+}

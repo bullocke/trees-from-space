@@ -34,7 +34,7 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- |
 | Python | tested 2026-11-04 | tested 2026-11-04 | untested (optional) | tested 2026-11-04 |
-| R | tested 2026-11-04 | untested | untested (optional) | not supported yet |
+| R | tested 2026-11-04 | tested 2026-11-04 | untested (optional) | not supported yet |
 
 ## Validation record
 
@@ -49,6 +49,7 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Warm (cache) | Passed | 10 s | 498 MB | 0.00 MB | 0 / 9 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Offline (`TFS_OFFLINE=1`) | Passed | 11 s | 487 MB | 0.00 MB | 0 / 9 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Cache from the Python run | Passed | 10 s | 494 MB | 0.09 MB | 0 / 9 |
+| 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | R 4.5.3 | Cache from the Python run | Passed | 15 s | 493 MB | 0.09 MB | 0 / 9 |
 
 **Checks of the result** (2026-11-04, local):
 
@@ -58,6 +59,6 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 - **Windowed reads.** The selected scene's four 10 m band files and its SCL total about 900 MB; the lesson reads windows of about 2.8 MB in all, from five scenes.
 - **Failure messages.** Offline with an empty cache, a date window before Sentinel-2's record, and a cloudy day with the catalog filter turned off each stop with a message that says what to do.
 
-Local Python runs were recorded at commit `580ac0e`, local R runs at `3a1d403`, and the CHPC and Colab runs at `06d25f8`. All selected the same scene and gave identical NDVI statistics.
+Local Python runs were recorded at commit `580ac0e`, local R runs at `3a1d403`, the CHPC and Colab Python runs at `06d25f8`, and the CHPC R run at `c9f5406`. All selected the same scene and gave identical NDVI statistics.
 
 Full records are in [`validation/`](validation/). Environment: [`python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt).

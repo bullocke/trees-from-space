@@ -1,5 +1,7 @@
 # Canopy height from GEDI lidar footprints
 
+[![Open the Python notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bullocke/trees-from-space/blob/main/tutorials/gedi-canopy-height/gedi-canopy-height-python.ipynb)
+
 | | |
 | --- | --- |
 | **Notebook** | [`gedi-canopy-height-python.ipynb`](gedi-canopy-height-python.ipynb) (an R version is planned) |
@@ -31,7 +33,7 @@ With the default settings, the search finds 57 granules over the box (2019 to 20
 
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- |
-| Python | tested 2026-11-04 | untested | untested | untested |
+| Python | tested 2026-11-04 | untested | untested | tested 2026-11-04 |
 | R | planned | planned | planned | planned |
 
 ## Validation record
@@ -41,6 +43,7 @@ With the default settings, the search finds 57 granules over the box (2019 to 20
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Cold (empty cache): new Harmony job | Passed | 342 s | 268 MB | 4.88 MB | 3,938 of 5,755 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Warm (cache) | Passed | 8 s | 263 MB | 0.00 MB | 3,938 of 5,755 |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Offline (`TFS_OFFLINE=1`) | Passed | 8 s | 264 MB | 0.00 MB | 3,938 of 5,755 |
+| 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache): new Harmony job | Passed | 305 s, excluding package installation | not recorded | 4.86 MB | 3,938 of 5,755 |
 
 **Checks of the result** (2026-11-04, local):
 
@@ -49,6 +52,6 @@ With the default settings, the search finds 57 granules over the box (2019 to 20
 - **Results.** 5,755 footprints fell inside the box; 3,938 passed the quality and degrade flags (2,263 power, 1,675 coverage). Kept RH98 has a median of 7.44 m and a 90th percentile of 16.05 m.
 - **Failure messages.** Offline with an empty cache and a date window before GEDI's record each stop with a message that says what to do.
 
-Runs recorded `c2c331d-dirty`: the notebook and scripts were those of commit c2c331d; the uncommitted changes were to READMEs and the environment guide. Harmony processing took 1 to 10 minutes per job across our runs and is the main source of runtime variation.
+Runs recorded `c2c331d-dirty`: the notebook and scripts were those of commit c2c331d; the uncommitted changes were to READMEs and the environment guide. The Colab run used commit c9f5406 and gave the same counts and RH98 statistics as the local runs. Harmony processing took 1 to 10 minutes per job across our runs and is the main source of runtime variation.
 
 Full records are in [`validation/`](validation/). Environment: [`python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt).
