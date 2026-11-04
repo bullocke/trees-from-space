@@ -1,0 +1,60 @@
+{
+ "check": "nisar-backscatter lesson against source files and Sentinel-2",
+ "provenance": "cowlitz_nisar_provenance.json",
+ "known_pixels": {
+  "pixels": 50,
+  "max_abs_diff_db": 9.374292488928404e-07,
+  "passed": true
+ },
+ "aggregation": {
+  "dates": 3,
+  "blocks": 60,
+  "max_rel_diff": 0.0,
+  "passed": true
+ },
+ "coherence_80m": {
+  "pairs": [
+   {
+    "pair": "NISAR_L2_PR_GUNW_021_172_D_065_022_4000_SH_20260602T031852_20260602T031927_20260614T031851_20260614T031926_P05023_N_F_J_001",
+    "pixels_80m": 6724,
+    "rank_correlation": 0.935,
+    "median_20m_mean": 0.564,
+    "median_80m": 0.555
+   },
+   {
+    "pair": "NISAR_L2_PR_GUNW_012_172_D_065_013_4000_SH_20260214T031852_20260214T031927_20260226T031853_20260226T031928_P05023_N_F_J_001",
+    "pixels_80m": 6724,
+    "rank_correlation": 0.978,
+    "median_20m_mean": 0.507,
+    "median_80m": 0.491
+   },
+   {
+    "pair": "NISAR_L2_PR_GUNW_028_172_D_065_029_4000_SH_20260825T031847_20260825T031922_20260906T031847_20260906T031922_P05023_N_F_J_002",
+    "pixels_80m": 6724,
+    "rank_correlation": 0.969,
+    "median_20m_mean": 0.494,
+    "median_80m": 0.478
+   }
+  ],
+  "min_rank_correlation": 0.935,
+  "passed": true
+ },
+ "sentinel2": {
+  "items": [
+   "S2B_T10TES_20250916T191932_L2A",
+   "S2C_T10TES_20260916T191726_L2A"
+  ],
+  "ndvi_change_median": {
+   "harvest_patches": -0.495,
+   "set_aside_by_coherence": 0.049,
+   "unchanged": -0.005
+  },
+  "harvest_patches": 14,
+  "harvest_patches_with_ndvi_loss_over_0.2": 14,
+  "sentinel2_cut_pixels": 5060,
+  "sentinel2_cut_pixels_in_harvest_patches": 0.67,
+  "harvest_pixels_with_ndvi_loss_over_0.3": 0.897,
+  "passed": true
+ },
+ "passed": true
+}
