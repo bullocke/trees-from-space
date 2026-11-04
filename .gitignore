@@ -37,6 +37,7 @@ private-patterns.txt
 
 # Agent and project-owner files (kept local by decision)
 CLAUDE.md
+/.dev/
 CLAUDE.local.md
 .claude/
 trees_from_space_getting_started.md
