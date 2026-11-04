@@ -4,37 +4,39 @@
 
 | | |
 | --- | --- |
-| **Notebook** | [`gedi-canopy-height-python.ipynb`](gedi-canopy-height-python.ipynb) (an R version is planned) |
+| **Notebooks** | [`gedi-canopy-height-python.ipynb`](gedi-canopy-height-python.ipynb) and [`gedi-canopy-height-r.ipynb`](gedi-canopy-height-r.ipynb) |
 | **Question** | How tall is the forest around the Pando aspen stand, according to GEDI's laser footprints, and which footprints can we trust? |
-| **You will** | Find GEDI granules in NASA's catalog; submit an asynchronous NASA Harmony request that returns only the study area and the needed variables; read HDF5 files with h5py; screen footprints with the version 3 quality and degrade flags; map RH98 canopy height as samples and compare power and coverage beams |
-| **Prerequisites** | [Getting started](../getting-started/); an Earthdata Login in `~/.netrc`. The Python environment must include `h5py` and `harmony-py` (added on 2026-11-04; see below). |
+| **You will** | Find GEDI granules in NASA's catalog; submit an asynchronous NASA Harmony request that returns only the study area and the needed variables (with `harmony-py` in Python, or Harmony's web interface and `httr2` in R); read HDF5 files with h5py or hdf5r; screen footprints with the version 3 quality and degrade flags; map RH98 canopy height as samples and compare power and coverage beams |
+| **Prerequisites** | [Getting started](../getting-started/); an Earthdata Login in `~/.netrc`. The Python environment must include `h5py` and `harmony-py`, and the R environment `httr2` and `hdf5r` (all added on 2026-11-04; see below). |
 | **Data** | GEDI L2A v003 (`GEDI02_A`); 19 leaf-on granules (about 34 GB in full) reduced by Harmony to about 5 MB |
 | **Time** | About 25 minutes of learner time, plus Harmony processing (1 to 10 minutes in our runs) |
-| **Outputs** | `outputs/gedi-canopy-height/python/`: footprints with quality fields (GeoPackage), figure (PNG), summary and screening table (CSV), provenance with the Harmony job (JSON) |
+| **Outputs** | `outputs/gedi-canopy-height/python/` or `.../r/`: footprints with quality fields (GeoPackage), figure (PNG), summary and screening table (CSV), provenance with the Harmony job (JSON) |
 | **Level** | Intermediate |
 
 ![Expected result: GEDI canopy-height footprints over the Pando study area and their distribution](figures/expected-gedi.png)
 
-This lesson introduces lidar footprints and the brief's asynchronous subsetting pattern. GEDI granules are about 2 GB each, while the footprints over a 6.6 km study box amount to a few hundred kilobytes, so the lesson asks NASA's Harmony service to subset the data where it is stored. It saves the Harmony job number, so a rerun picks up the same job instead of submitting a duplicate, and it stops waiting after `HARMONY_WAIT_MINUTES` (20 by default) with a message to rerun later.
+This lesson introduces lidar footprints and asynchronous subsetting on NASA's side. GEDI granules are about 2 GB each, while the footprints over a 6.6 km study box amount to a few hundred kilobytes, so the lesson asks NASA's Harmony service to subset the data where it is stored. It saves the Harmony job number, so a rerun picks up the same job instead of submitting a duplicate, and it stops waiting after `HARMONY_WAIT_MINUTES` (20 by default) with a message to rerun later.
 
-**Environments created before 2026-11-04** lack `h5py` and `harmony-py`. From the repository folder, run `mamba env update -p <prefix>/tfs-python -f environments/python-base.yml` (on CHPC, after `module load miniforge3`), or recreate the environment as described in the [environment guide](../../docs/getting-started/environments.md).
+The R version sends the same request as the Python version, but to Harmony's web interface directly: it searches NASA's catalog through its web API, posts the subset request as a form, polls the job, and downloads the result links with `httr2`. Python's `harmony-py` package does the same steps behind the scenes. Both versions name the cached request identically, so whichever runs second reuses the other's subset files and sends nothing to Harmony.
+
+**Environments created before 2026-11-04** lack these packages. From the repository folder, run `mamba env update -p <prefix>/tfs-python -f environments/python-base.yml` or `mamba env update -p <prefix>/tfs-r -f environments/r-base.yml` (on CHPC, after `module load miniforge3`), or recreate the environment as described in the [environment guide](../../docs/getting-started/environments.md). Each notebook stops with this advice if a package is missing.
 
 ## Products and references
 
 | Product | Version | Access route | Documentation |
 | --- | --- | --- | --- |
-| GEDI L2A Elevation and Height Metrics, footprint level | v003 (`GEDI02_A`, collection `C3974616071-LPCLOUD`) | `earthaccess` search; NASA Harmony trajectory subsetter (spatial and variable subset) through `harmony-py`; `h5py` | [doi:10.5067/GEDI/GEDI02_A.003](https://doi.org/10.5067/GEDI/GEDI02_A.003); [user guide v3](https://lpdaac.usgs.gov/documents/2442/GEDI02_User_Guide_V3.pdf) |
+| GEDI L2A Elevation and Height Metrics, footprint level | v003 (`GEDI02_A`, collection `C3974616071-LPCLOUD`) | Python: `earthaccess` search, NASA Harmony trajectory subsetter (spatial and variable subset) through `harmony-py`, `h5py`. R: CMR search API and Harmony's web interface through `httr2`, `hdf5r` | [doi:10.5067/GEDI/GEDI02_A.003](https://doi.org/10.5067/GEDI/GEDI02_A.003); [user guide v3](https://lpdaac.usgs.gov/documents/2442/GEDI02_User_Guide_V3.pdf) |
 
 **Why version 3.** Version 2 is complete and ends in July 2025; version 3 is the active version, with improved geolocation and consistent quality flags. In version 3 the beam groups hold `l2a_quality_flag_rel3` (and the version 2 flag as `l2a_quality_flag_rel2`), not a variable named `quality_flag`. The lesson keeps footprints with `l2a_quality_flag_rel3 == 1` and `degrade_flag == 0`, and offers the user guide's power-beam and night-only recommendations as settings.
 
-With the default settings, the search finds 57 granules over the box (2019 to 2026), of which 19 fall in the leaf-on months (June to September). Harmony returns footprints for 13 of them; the other 6 cross the catalog's rough outline of the box without any footprint inside it, and the job reports them as warnings.
+With the default settings, the search finds 56 granules over the box (2019 to 2026), of which 19 fall in the leaf-on months (June to September). Harmony returns footprints for 13 of them; the other 6 cross the catalog's rough outline of the box without any footprint inside it, and the job reports them as warnings.
 
 ## Support status
 
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- |
 | Python | tested 2026-11-04 | tested 2026-11-04 | untested (optional) | tested 2026-11-04 |
-| R | planned | planned | planned | planned |
+| R | tested 2026-11-04 | untested | untested (optional) | not supported yet |
 
 ## Validation record
 
@@ -45,14 +47,19 @@ With the default settings, the search finds 57 granules over the box (2019 to 20
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Offline (`TFS_OFFLINE=1`) | Passed | 8 s | 264 MB | 0.00 MB | 3,938 of 5,755 |
 | 2026-11-04 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | Python 3.12.16 | Cold (empty cache): new Harmony job | Passed | 266 s | 244 MB | 4.88 MB | 3,938 of 5,755 |
 | 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache): new Harmony job | Passed | 305 s, excluding package installation | not recorded | 4.86 MB | 3,938 of 5,755 |
+| 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Cold (empty cache): new Harmony job | Passed | 337 s | 279 MB | 4.88 MB | 3,938 of 5,755 |
+| 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Warm (cache) | Passed | 10 s | 261 MB | 0.00 MB | 3,938 of 5,755 |
+| 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Offline (`TFS_OFFLINE=1`) | Passed | 9 s | 261 MB | 0.00 MB | 3,938 of 5,755 |
+| 2026-11-04 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Cache from the Python run | Passed | 8 s | 265 MB | 0.00 MB | 3,938 of 5,755 |
 
 **Checks of the result** (2026-11-04, local):
 
 - **Harmony subsets match the original granules.** For the two largest subsets, every footprint of the busiest beam (150 and 149 footprints) was found in the original 2 GB granule, read remotely, with identical shot numbers, positions, RH98, quality flag, and degrade flag.
-- **No duplicate jobs.** A run with `HARMONY_WAIT_MINUTES = 0` submitted a job and stopped with a message naming it; the next run printed "Reusing Harmony job" for the same job, waited for it to finish, and produced the same result.
+- **No duplicate jobs.** In each language, a run with `HARMONY_WAIT_MINUTES = 0` submitted a job and stopped with a message naming it; the next run printed "Reusing Harmony job" for the same job, waited for it to finish, and produced the same result.
 - **Results.** 5,755 footprints fell inside the box; 3,938 passed the quality and degrade flags (2,263 power, 1,675 coverage). Kept RH98 has a median of 7.44 m and a 90th percentile of 16.05 m.
-- **Failure messages.** Offline with an empty cache and a date window before GEDI's record each stop with a message that says what to do.
+- **Failure messages.** Offline with an empty cache and a date window before GEDI's record each stop with a message that says what to do, in both languages.
+- **Python and R agree exactly.** The R run submitted its own Harmony job. Its 5,755 footprints have the same shot numbers as Python's, with identical positions, RH98, quality fields, and `kept` flags, and the same summary and screening tables (`scripts/compare_footprints.py`); times agree to within 2 microseconds, the precision of the text format. Run on the cache the Python version filled, the R version found the subset files under the same request name and sent nothing to Harmony.
 
-Runs recorded `c2c331d-dirty`: the notebook and scripts were those of commit c2c331d; the uncommitted changes were to READMEs and the environment guide. The CHPC and Colab runs used commit c9f5406 and gave the same counts and RH98 statistics as the local runs. Harmony processing took 1 to 10 minutes per job across our runs and is the main source of runtime variation.
+Python runs recorded `c2c331d-dirty`: the notebook and scripts were those of commit c2c331d; the uncommitted changes were to READMEs and the environment guide. The R cold run recorded `00fcd6f-dirty`: the R notebook and `scripts/compare_footprints.py` were new and uncommitted, and were committed unchanged in 596ec5e, at which the warm and offline runs were recorded (`-dirty` for README changes only). The CHPC and Colab runs used commit c9f5406 and gave the same counts and RH98 statistics as the local runs. Harmony processing took 1 to 10 minutes per job across our runs and is the main source of runtime variation.
 
-Full records are in [`validation/`](validation/). Environment: [`python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt).
+Full records are in [`validation/`](validation/). Environments: [`python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt) and [`r-base.linux-64.lock.txt`](../../environments/r-base.linux-64.lock.txt).

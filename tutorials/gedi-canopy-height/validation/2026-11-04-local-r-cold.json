@@ -1,0 +1,40 @@
+{
+ "notebook": "tutorials/gedi-canopy-height/gedi-canopy-height-r.ipynb",
+ "language": "r",
+ "platform": "local",
+ "label": "cold",
+ "run_utc": "2026-11-04T15:15:35+00:00",
+ "outcome": "passed",
+ "wall_time_s": 337.1,
+ "peak_kernel_rss_mb": 278.8,
+ "new_cache_mb": 4.878,
+ "new_cache_files": 15,
+ "kernel": "tfs-r",
+ "commit": "00fcd6f-dirty",
+ "parameters": {},
+ "error": null,
+ "summary": {
+  "lesson": "gedi-canopy-height",
+  "language": "r",
+  "platform": "local",
+  "run_utc": "2026-11-04T15:21:23+00:00",
+  "network": true,
+  "granules": 19,
+  "subset_files": 13,
+  "subset_mb": 4.86,
+  "footprints_in_box": 5755,
+  "footprints_kept": 3938,
+  "kept_power": 2263,
+  "kept_coverage": 1675,
+  "rh98_m_median": 7.44,
+  "rh98_m_p90": 16.05,
+  "elapsed_s": 345.3,
+  "versions": {
+   "r": "4.5.3",
+   "httr2": "1.3.0",
+   "hdf5r": "1.3.16",
+   "hdf5": "2.2.0",
+   "sf": "1.1.0"
+  }
+ }
+}

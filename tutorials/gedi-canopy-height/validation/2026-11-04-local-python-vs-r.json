@@ -1,0 +1,31 @@
+{
+ "check": "python-vs-r-footprints",
+ "same_granule_set": true,
+ "same_subset_granules": true,
+ "footprints": {
+  "python": 5755,
+  "r": 5755
+ },
+ "same_shot_numbers": true,
+ "unique_shot_numbers": true,
+ "identical_columns": {
+  "granule": true,
+  "beam": true,
+  "beam_type": true,
+  "lon": true,
+  "lat": true,
+  "quality_flag": true,
+  "degrade_flag": true,
+  "sensitivity": true,
+  "solar_elevation_deg": true,
+  "leaf_off_flag": true,
+  "landsat_treecover_pct": true,
+  "kept": true,
+  "rh98_m": true
+ },
+ "max_time_difference_s": 1.111e-06,
+ "same_geometry": true,
+ "summary_differences": {},
+ "same_screening_table": true,
+ "passed": true
+}
