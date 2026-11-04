@@ -1,5 +1,7 @@
 # Mapping vegetation greenness with HLS
 
+[![Open the Python notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bullocke/trees-from-space/blob/main/tutorials/hls-vegetation-map/hls-vegetation-map-python.ipynb)
+
 | | |
 | --- | --- |
 | **Notebooks** | [`hls-vegetation-map-python.ipynb`](hls-vegetation-map-python.ipynb) · [`hls-vegetation-map-r.ipynb`](hls-vegetation-map-r.ipynb) |
@@ -29,7 +31,7 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC OnDemand, Frisco | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- | --- |
-| Python | tested 2026-11-03 | untested | untested | untested | untested |
+| Python | tested 2026-11-03 | untested | untested | tested 2026-11-04 | tested 2026-11-04 |
 | R | tested 2026-11-03 | untested | untested | untested | not supported yet |
 
 ## Validation record
@@ -43,6 +45,10 @@ The default settings use the `pando` site from [`examples/sites.geojson`](../../
 | 2026-11-03 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Warm (cache) | Passed | 6 s | 323 MB | 0.00 MB | 0 / 31 |
 | 2026-11-03 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Offline (`TFS_OFFLINE=1`) | Passed | 6 s | 315 MB | 0.00 MB | 0 / 31 |
 | 2026-11-03 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Cache from the Python run | Passed | 12 s | 311 MB | 0.02 MB | 0 / 31 |
+| 2026-11-04 | CHPC transfer job (`notchpeak-dtn`) | Python 3.12.16 | Cold (empty cache) | Passed | 60 s (job 79 s) | not recorded | not recorded | 31 / 0 |
+| 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache) | Passed | 289 s, excluding package installation | not recorded | not recorded | 31 / 0 |
+
+The CHPC and Colab runs selected the same granule and produced the same NDVI statistics as the local runs (median 0.5402, quartiles 0.4000 and 0.6372, 44,488 clear land pixels). Their records come from the summary each notebook prints, so memory and cache size were not measured. Reading the 31 windows took about five times longer from Colab than from CHPC or the University network.
 
 **Checks of the result** (2026-11-03, local):
 

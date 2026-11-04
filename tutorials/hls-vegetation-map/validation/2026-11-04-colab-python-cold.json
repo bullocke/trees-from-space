@@ -1,0 +1,36 @@
+{
+ "notebook": "tutorials/hls-vegetation-map/hls-vegetation-map-python.ipynb",
+ "language": "python",
+ "platform": "colab",
+ "label": "cold",
+ "run_utc": "2026-11-04T00:46:17+00:00",
+ "outcome": "passed",
+ "commit": "11d9a43",
+ "source": "Summary printed by the notebook's final cell, pasted by the project owner",
+ "notes": "Fresh Colab session. Same granule and NDVI statistics as the local and CHPC runs. elapsed_s excludes package installation.",
+ "summary": {
+  "lesson": "hls-vegetation-map",
+  "language": "python",
+  "platform": "colab",
+  "run_utc": "2026-11-04T00:46:17+00:00",
+  "network": true,
+  "files_downloaded": 31,
+  "files_cached": 0,
+  "granules_considered": 29,
+  "granule_id": "HLS.L30.T12SVH.2024240T180211.v2.0",
+  "aoi_pixels": 50175,
+  "clear_land_pixels": 44488,
+  "clear_fraction": 1.0,
+  "ndvi_median": 0.5402,
+  "ndvi_p25": 0.4,
+  "ndvi_p75": 0.6372,
+  "elapsed_s": 289.2,
+  "versions": {
+   "python": "3.13.18",
+   "earthaccess": "0.19.0",
+   "rasterio": "1.5.0",
+   "gdal": "3.12.1",
+   "numpy": "2.4.6"
+  }
+ }
+}

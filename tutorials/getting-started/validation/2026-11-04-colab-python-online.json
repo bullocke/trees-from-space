@@ -1,0 +1,37 @@
+{
+ "notebook": "tutorials/getting-started/getting-started-python.ipynb",
+ "language": "python",
+ "platform": "colab",
+ "label": "online",
+ "run_utc": "2026-11-04T00:39:12+00:00",
+ "outcome": "passed",
+ "commit": "11d9a43",
+ "source": "Summary printed by the notebook's final cell, pasted by the project owner",
+ "notes": "Fresh Colab session opened from the GitHub URL; Colab installed earthaccess 0.19.0 and rasterio 1.5.0 (pip) on Python 3.13.",
+ "summary": {
+  "notebook": "getting-started-python",
+  "run_utc": "2026-11-04T00:39:12+00:00",
+  "platform": "colab",
+  "python": "3.13.18",
+  "packages": {
+   "earthaccess": "0.19.0",
+   "rasterio": "1.5.0",
+   "pyproj": "3.8.0",
+   "geopandas": "1.2.0",
+   "numpy": "2.4.6",
+   "pandas": "2.2.3",
+   "matplotlib": "3.10.0",
+   "gdal": "3.12.1"
+  },
+  "missing_packages": [],
+  "paths_writable": true,
+  "network": true,
+  "netrc": {
+   "present": true,
+   "private": true,
+   "has_earthdata": true
+  },
+  "earthdata_login": "ok",
+  "data_access": "ok"
+ }
+}

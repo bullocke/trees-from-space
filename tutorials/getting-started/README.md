@@ -1,5 +1,7 @@
 # Getting started: check your setup
 
+[![Open the Python notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bullocke/trees-from-space/blob/main/tutorials/getting-started/getting-started-python.ipynb)
+
 | | |
 | --- | --- |
 | **Notebooks** | [`getting-started-python.ipynb`](getting-started-python.ipynb) · [`getting-started-r.ipynb`](getting-started-r.ipynb) |
@@ -21,5 +23,7 @@ The report contains no usernames, passwords, hostnames, or personal paths, so yo
 | 2026-11-03 | Local (WSL), `TFS_OFFLINE=1` | Python 3.12.16 | Offline (simulated) | Passed: network checks skipped with guidance | 6 s | 197 MB | Simulates a CHPC compute node |
 | 2026-11-03 | Local (WSL, Ubuntu 22.04) | R 4.5.3 | Online | Passed: data access OK | 6 s | 259 MB | terra 1.9.34, sf 1.1.0, GDAL 3.12.3; commit c58dc42 |
 | 2026-11-03 | Local (WSL), `TFS_OFFLINE=1` | R 4.5.3 | Offline (simulated) | Passed: network checks skipped with guidance | 5 s | 252 MB | Simulates a CHPC compute node |
+| 2026-11-04 | Colab (fresh session) | Python 3.13.18 | Online | Passed: login and data access OK | not recorded | not recorded | Colab's packages plus pip-installed earthaccess 0.19.0 and rasterio 1.5.0 (GDAL 3.12.1); commit 11d9a43 |
+| 2026-11-04 | CHPC OnDemand Jupyter, compute node | Python | n/a | **Failed to start Jupyter** (`jupyter: command not found`) | n/a | n/a | Setup box used `module purge`, `module load miniforge3`, `conda activate`. The CHPC guide now sets `PATH` directly; retest pending |
 
 Full records are in [`validation/`](validation/).

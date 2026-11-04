@@ -1,0 +1,12 @@
+{
+ "notebook": "tutorials/getting-started/getting-started-python.ipynb",
+ "language": "python",
+ "platform": "chpc-ondemand-compute",
+ "label": "launch",
+ "run_utc": "2026-11-04T03:37:37+00:00",
+ "outcome": "failed",
+ "commit": "11d9a43",
+ "source": "OnDemand Jupyter session log, summarized (log not committed)",
+ "error": "Jupyter server did not start: 'jupyter: command not found'. Environment Setup box was 'module purge; module load miniforge3; conda activate ~/envs/tfs-python; cd ~/trees-from-space'; the session log listed only the sticky chpc/1.0 module after setup.",
+ "notes": "docs/getting-started/chpc.md now puts the environment's bin on PATH directly (the approach notebook-dtn.sbatch uses, which ran successfully). Retest pending."
+}

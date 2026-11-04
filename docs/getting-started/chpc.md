@@ -2,7 +2,7 @@
 
 The University of Utah [Center for High Performance Computing](https://www.chpc.utah.edu/) (CHPC) is the main platform for these lessons. This page covers one-time setup, how to run a lesson, and where files live. It assumes you have a CHPC account and can log in to [Open OnDemand](https://ondemand.chpc.utah.edu/), CHPC's browser portal.
 
-> **Validation status.** The commands on this page follow CHPC documentation checked on 2026-11-03. They are being tested on CHPC now, and the [tutorial index](../tutorials/README.md) records each lesson's CHPC results. Placeholders such as `<account>` mean you supply your own value.
+> **Note:** This has not been endorsed by the University of Utah or the CHPC. I followed CHPC guidance in development and have done my best to ensure good practices, but use at your own risk. When in doubt, consult CHPC documentation or support. I hope to have this fully validated by the CHPC technical team soon.
 
 ## Which machines can reach the internet
 
@@ -21,7 +21,7 @@ CHPC's [OnDemand documentation](https://www.chpc.utah.edu/documentation/software
 
 Do these steps once, on a login node. Connect with `ssh <uNID>@notchpeak.chpc.utah.edu`, or open a shell from OnDemand (*Clusters → notchpeak Shell Access*).
 
-1. **Get the lessons.**
+1. **Get the lessons.** These steps clone into your home directory. If you clone somewhere else, such as your group space, use that folder wherever this page says `~/trees-from-space`.
 
    ```bash
    cd ~
@@ -58,14 +58,17 @@ Do these steps once, on a login node. Connect with `ssh <uNID>@notchpeak.chpc.ut
 ## Starting Jupyter in OnDemand
 
 1. In OnDemand, choose *Interactive Apps → Jupyter*.
-2. Set **Jupyter Python version** to *Custom (Environment Setup below)* and enter these lines in **Environment Setup for Custom Python**:
+2. Set **Jupyter Python version** to *Custom (Environment Setup below)* and enter these lines in **Environment Setup for Custom Python**, changing the last line if you cloned the repository somewhere else:
 
    ```bash
-   module purge
-   module load miniforge3
-   conda activate ~/envs/tfs-python
+   export TFS_PYTHON_ENV=$HOME/envs/tfs-python
+   export PATH=$TFS_PYTHON_ENV/bin:$PATH
+   export GDAL_DATA=$TFS_PYTHON_ENV/share/gdal PROJ_DATA=$TFS_PYTHON_ENV/share/proj PYTHONNOUSERSITE=1
+   test -x $TFS_PYTHON_ENV/bin/jupyter || echo "ERROR: no Jupyter in $TFS_PYTHON_ENV; check the environment path"
    cd ~/trees-from-space
    ```
+
+   These lines put the environment's programs, including Jupyter, first on your `PATH`, and set the two data paths that `conda activate` would otherwise set. They do not rely on loading modules or on `conda activate`, which did not take effect in OnDemand's setup script in our tests. The transfer-job script uses the same approach.
 
 3. Choose resources. For these lessons, 2 cores, 8 GB of memory, and 2 hours are plenty. The default cluster (`notchpeak`) and partition (`notchpeak-shared-short`) are designed for interactive work. Use your group's account.
 4. Click **Launch**, wait for the session to start, and click **Connect to Jupyter**.
@@ -119,6 +122,7 @@ rm -rf ~/trees-from-space/cache/hls
 | --- | --- | --- |
 | A cell waits, then reports that the network is unreachable | The notebook is running on a compute node with no cache yet | Use Route A or Route B above |
 | `sbatch: error: ... logs/...` or a job with no log | The `logs/` folder does not exist | `mkdir -p ~/trees-from-space/logs` |
+| The Jupyter session ends at once; its log says `jupyter: command not found` | The setup lines did not put the environment on `PATH` | Use the setup lines above exactly, with your environment's path. The log's `ERROR: no Jupyter` line means the path is wrong. |
 | The kernel menu lacks the Trees from Space kernels | Kernels were not registered | Run step 3 of the one-time setup |
 | Import errors or GDAL library errors | A CHPC module conflicts with the environment | Start the setup box and your terminal with `module purge` |
 | `Earthdata credentials not found` | No `~/.netrc` | Follow the [Earthdata Login guide](earthdata-login.md) |
