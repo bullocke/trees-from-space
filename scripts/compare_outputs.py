@@ -1,9 +1,9 @@
 """Compare the Python and R outputs of a lesson that writes a raster result.
 
-Checks, in order: the same set of granules was considered, the same granule was
-selected, the output rasters share CRS, transform, and shape, their valid-pixel
-masks are identical, their values agree within a tolerance, and the summary
-tables agree.
+Checks, in order: the same set of granules or STAC items was considered, the
+same one was selected, the output rasters share CRS, transform, and shape,
+their valid-pixel masks are identical, their values agree within a tolerance,
+and the summary tables agree.
 
 Usage:
 
@@ -38,6 +38,18 @@ SUMMARY_FIELDS = (
 )
 
 
+def considered(prov: dict) -> list[str]:
+    """Granule IDs (HLS lessons) or STAC item IDs (STAC lessons) considered."""
+    return sorted(prov.get("granules_considered") or prov.get("items_considered") or [])
+
+
+def selected(prov: dict) -> str | None:
+    """The granule or STAC item the lesson selected."""
+    if "selected_granule" in prov:
+        return prov["selected_granule"]["granule_id"]
+    return prov.get("source_item", {}).get("id")
+
+
 def single(folder: Path, pattern: str) -> Path:
     matches = sorted(folder.glob(pattern))
     if len(matches) != 1:
@@ -60,18 +72,14 @@ def main(argv: list[str] | None = None) -> int:
     for lang, folder in (("python", args.python_dir), ("r", args.r_dir)):
         prov_path = single(folder, "*_provenance.json")
         prov[lang] = json.loads(prov_path.read_text())
-        tif = prov_path.with_name(prov_path.name.replace("_provenance.json", ".tif"))
-        with rasterio.open(tif) as src:
+        with rasterio.open(single(folder, "*.tif")) as src:
             rasters[lang] = {
                 "crs": src.crs,
                 "transform": src.transform,
                 "data": src.read(1).astype("float64"),
                 "nodata": src.nodata,
             }
-        summary_csv = prov_path.with_name(
-            prov_path.name.replace("_provenance.json", "_summary.csv")
-        )
-        with summary_csv.open() as handle:
+        with single(folder, "*_summary.csv").open() as handle:
             summaries[lang] = next(csv.DictReader(handle))
 
     py, r = rasters["python"], rasters["r"]
@@ -85,11 +93,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     result = {
         "check": "python-vs-r",
-        "same_granule_set": sorted(prov["python"]["granules_considered"])
-        == sorted(prov["r"]["granules_considered"]),
-        "same_selected_granule": prov["python"]["selected_granule"]["granule_id"]
-        == prov["r"]["selected_granule"]["granule_id"],
-        "selected_granule": prov["python"]["selected_granule"]["granule_id"],
+        "same_granule_set": considered(prov["python"]) == considered(prov["r"]),
+        "same_selected_granule": selected(prov["python"]) == selected(prov["r"]),
+        "selected_granule": selected(prov["python"]),
         "same_grid": bool(same_grid),
         "nodata": {"python": py["nodata"], "r": r["nodata"]},
     }
