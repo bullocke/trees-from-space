@@ -1,5 +1,7 @@
 # Forest change from NISAR radar backscatter and coherence
 
+[![Open the Python notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bullocke/trees-from-space/blob/main/tutorials/nisar-backscatter/nisar-backscatter-python.ipynb)
+
 | | |
 | --- | --- |
 | **Notebook** | [`nisar-backscatter-python.ipynb`](nisar-backscatter-python.ipynb) |
@@ -45,7 +47,7 @@ We chose the box on 2026-11-04 by reading NISAR's 80 m frequency B layer for all
 
 | Language | Local (Linux/WSL) | CHPC OnDemand, compute node | CHPC transfer job | Colab |
 | --- | --- | --- | --- | --- |
-| Python | tested 2026-11-04 | untested | untested (optional) | untested |
+| Python | tested 2026-11-04 | tested 2026-11-05 | untested (optional) | tested 2026-11-05 |
 
 ## Validation record
 
@@ -54,6 +56,8 @@ We chose the box on 2026-11-04 by reading NISAR's 80 m frequency B layer for all
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Cold (empty cache): 55 files read remotely, 692 MB transferred | Passed | 439 s | 733 MB | 42.1 MB | 14 (154 ha) |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Warm (cache) | Passed | 20 s | 593 MB | 0.00 MB | 14 (154 ha) |
 | 2026-11-04 | Local (WSL, Ubuntu 22.04) | Python 3.12.16 | Offline (`TFS_OFFLINE=1`) | Passed | 15 s | 592 MB | 0.00 MB | 14 (154 ha) |
+| 2026-11-05 | CHPC OnDemand, compute node (`notchpeak-shared-short`) | Python 3.12.16 | Cold (empty cache): 55 files, 692 MB transferred | Passed | 466 s | 732 MB | 42.1 MB | 14 (154 ha) |
+| 2026-11-05 | Colab (fresh session) | Python 3.13.18 | Cold (empty cache): 55 files, 692 MB transferred | Passed | 1,011 s, excluding package installation | not recorded | not recorded | 14 (154 ha) |
 
 **Checks of the result** (2026-11-04, local; [`validation/2026-11-04-local-python-checks.json`](validation/2026-11-04-local-python-checks.json), from `scripts/check_nisar_lesson.py`):
 
@@ -63,5 +67,7 @@ We chose the box on 2026-11-04 by reading NISAR's 80 m frequency B layer for all
 - **Sentinel-2.** Between Sentinel-2 L2A images of 16 September 2025 and 16 September 2026 (tile T10TES), NDVI fell by a median of 0.50 in the harvest patches, and every one of the 14 patches lost more than 0.2. Patches that backscatter flagged but winter coherence set aside showed no loss (median +0.05), and unchanged pixels changed by −0.005. The harvest patches contain 67% of the pixels where NDVI fell by more than 0.3 from above 0.8; the remainder was not examined further.
 - **Other sites.** With `SITE_ID = "wref"` (same stack), the run passed and found no harvest; its box median HV fell from −9.27 to −11.96 dB on 2026-01-21 and recovered 12 days later. With `SITE_ID = "pando"` and `STACK = None`, the run used stack `157_D_069` (10 dates from 2026-06-25) and passed with no harvest and no winter pairs.
 - **Failure messages.** Offline with an empty cache, and a date window before NISAR's record, each stop with a message that says what to do.
+
+The CHPC and Colab runs gave the same granules, patches, and summary values as the local runs. The CHPC record shows `2578a51-dirty` because of local changes in that clone; the notebook there was unchanged since it was committed. Colab used pandas 2.2.3 and h5py 3.14.0 rather than the project environment's versions, with identical results, and its data reading took about twice as long as on CHPC or locally.
 
 Full records, with the commit and package versions, are in [`validation/`](validation/). Records of CHPC and Colab runs come from the printed output of `scripts/validate_notebook.py` without `--record`. The environment is described by [`environments/python-base.linux-64.lock.txt`](../../environments/python-base.linux-64.lock.txt).
